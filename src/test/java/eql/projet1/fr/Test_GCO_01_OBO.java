@@ -38,8 +38,18 @@ public class Test_GCO_01_OBO {
 		PageIndex page_index = page_login.connect(driver, login, pswd);
 		assertTrue(page_index.calendrier_btn.isDisplayed());
 		
-		//
+		// accès à la page Type d'Heures
 		PageTypeHeures page_typeheures = page_index.accessTypeHeures(driver);
+		assertEquals("Erreur titre de la page", "LibrePlan: Types d'heures", driver.getTitle());
+		assertTrue(page_typeheures.code_th.isDisplayed());
+		assertTrue(page_typeheures.ndt_th.isDisplayed());
+		assertTrue(page_typeheures.ppd_th.isDisplayed());
+		assertTrue(page_typeheures.active_th.isDisplayed());
+		assertTrue(page_typeheures.actions_th.isDisplayed());
+		assertTrue(page_typeheures.creer_btn.isDisplayed());
+		
+		// création d'un type d'heure
+		page_typeheures.creer_btn.click();
 		
 		
 		

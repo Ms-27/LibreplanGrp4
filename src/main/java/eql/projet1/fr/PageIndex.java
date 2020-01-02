@@ -12,7 +12,7 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//div[contains(@id,'Qh7-cave')]")
 	WebElement new_project_popup;
 	
-	@FindBy (xpath="//div[contains(@id,'Qh7-cap')]")
+	@FindBy (xpath="//div[contains(@class,'z-window-modal-header')]")
 	WebElement name_popup;
 	
 	@FindBy (xpath="//span/text()[contains(.,'Nom')]")
@@ -36,13 +36,13 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//span/text()[contains(.,'Calendrier')]")
 	WebElement new_project_calendar;
 	
-	@FindBy (xpath="//input[contains(@id,'Qh7')]")
+	@FindBy (xpath="//div[contains(@id,'-cell')]/input")
 	WebElement new_project_name_input;
 	
-	@FindBy (xpath="//input[contains(@id,'Qv7')]")
+	@FindBy (xpath="//input[contains(@style,'381px')]")
 	WebElement new_project_model_input;
 	
-	@FindBy (xpath="//input[contains(@id,'Q38')]")
+	@FindBy (xpath="//input[contains(@class,'z-textbox-disd')]")
 	WebElement new_project_code_input;
 	
 	@FindBy (xpath="//input[contains(@id,'Q48')]")

@@ -13,6 +13,7 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//button[contains(text(), 'Coût')]")
 	WebElement cout_btn;
 	
+	// Coucou c'est un commentaire temporaire
 	@FindBy (xpath="//td[@class='usuario'][contains(text(), 'utilisateur')]")
 	WebElement user_txt;
 }

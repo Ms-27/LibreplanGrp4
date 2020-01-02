@@ -7,7 +7,10 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//a[contains(@href, 'logout')]")
 	WebElement signout_btn;
 	
-	@FindBy (xpath="//button/text()[contains(., 'Coût')]")
+	@FindBy (xpath="//button[contains(text(), 'Calendrier')]")
+	WebElement calendrier_btn;
+	
+	@FindBy (xpath="//button[contains(text(), 'Coût')]")
 	WebElement cout_btn;
 	
 	@FindBy (xpath="//td[@class='usuario'][contains(text(), 'utilisateur')]")

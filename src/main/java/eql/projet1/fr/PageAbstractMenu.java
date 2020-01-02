@@ -15,4 +15,6 @@ public abstract class PageAbstractMenu {
 	
 	@FindBy (xpath="//td[@class='usuario'][contains(text(), 'utilisateur')]")
 	WebElement user_txt;
+	
+	// on teste les joies du push pull!!!!!
 }

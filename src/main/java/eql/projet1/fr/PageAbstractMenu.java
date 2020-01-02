@@ -7,5 +7,8 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//a[@class, 'cerrar_session']")
 	WebElement signout_btn;
 	
+	@FindBy (xpath="//button/text()[contains(., 'Coût')]")
+	WebElement cout_btn;
+	
 	
 }

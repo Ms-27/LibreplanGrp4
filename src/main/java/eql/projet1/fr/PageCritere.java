@@ -32,10 +32,10 @@ public class PageCritere {
 	@FindBy(xpath = "//td[contains(text(), 'Enregistrer')]")
 	WebElement enregistrer_btn;
 	
-	@FindBy(xpath = "//td[contains(text(), 'Sauver')]")
+	@FindBy(xpath = "//span[@class='save-button global-action z-button']/table")
 	WebElement sauver_btn;
 	
-	@FindBy(xpath = "//td[contains(text(), 'Annuler')]")
+	@FindBy(xpath = "//span[@class='cancel-button global-action z-button']/table")
 	WebElement annuler_btn;
 	
 	@FindBy(xpath = "//div[contains(@class, 'row-cnt')]/input[@class=\"z-textbox\"]")
@@ -49,5 +49,20 @@ public class PageCritere {
 	
 	@FindBy(xpath = "//td[contains(text(), 'PARTICIPANT')]")
 	WebElement participant_ddm_content;
+	
+	@FindBy(xpath = "//tr[3]/td[2]/div/span/input")
+	WebElement valeur_multiple_ressources_checkbox;
+	
+	@FindBy(xpath = "//tr[4]/td[2]/div/span/input")
+	WebElement hierarchie_checkbox;
+	
+	@FindBy(xpath = "//tr[5]/td[2]/div/span/input")
+	WebElement active_checkbox;
+	
+	@FindBy(xpath = "//textarea")
+	WebElement description_field;
+	
+	@FindBy(xpath = "//div[contains(@class, 'z-row')]/span[contains(text(), 'Test bouton')]")
+	WebElement critère_test_table;
 
 }

@@ -18,6 +18,10 @@ public class Test_CRI_01_CGA {
 	String login = "admin";
 	String password = "admin";
 	String critere_name = "Critère - Test bouton [Annuler]";
+	String critere_description = "Critère - Test bouton [Annuler]";
+	String critere_name1 = "Critère - Test bouton [Enregistrer]";
+	String critere_description1 = "Critère - Test bouton [Enregistrer]";
+
 	String filePath = "src/test/snapshots/debug_participant.png";
 
 	@Before
@@ -56,20 +60,34 @@ public class Test_CRI_01_CGA {
 		page_critere.creer_btn.click();
 		assertTrue("Le bouton Enregistrer n'est pas présent", page_critere.enregistrer_btn.isEnabled());
 		assertTrue("Le bouton Sauver et Continuer n'est pas présent", page_critere.sauver_btn.isEnabled());
-		assertTrue("Le bouton Annuler n'est ps présent", page_critere.annuler_btn.isEnabled());
-		
+		assertTrue("Le bouton Annuler n'est pas présent", page_critere.annuler_btn.isEnabled());
+
+		// Créer un critère - bouton [Annuler] 
 		TechnicalTools.fillFields(page_critere.nom_input, critere_name);
 		page_critere.type_dropdown_btn.click();
 		page_critere.participant_ddm_content.click();
-		try {
-			TechnicalTools.takeSnapShot(driver, filePath);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		assertEquals("Le menu déroulant n'est pas sur la valeur PARTICIPANT", "PARTICIPANT", page_critere.type_input.getText());
+		assertTrue("La checkbox valeur multiple par ressource n'est pas coché", page_critere.valeur_multiple_ressources_checkbox.isEnabled());
+		assertTrue("La checkbox hiérarchie n'est pas coché", page_critere.hierarchie_checkbox.isEnabled());
+		assertTrue("La checkbox activé n'est pas coché", page_critere.active_checkbox.isEnabled());
+
+		TechnicalTools.fillFields(page_critere.description_field, critere_description);
+		page_critere.annuler_btn.click();
+		assertEquals("Le tableau ne s'est pas annulé", "Types de critères Liste", page_critere.criteres_header.getText());
+		assertFalse("Le bouton Annuler est présent",page_critere.annuler_btn.isDisplayed());
 		
+		// Créer un critère - bouton [Enregistrer]
+		TechnicalTools.fillFields(page_critere.nom_input, critere_name1);
+		page_critere.type_dropdown_btn.click();
+		page_critere.participant_ddm_content.click();
+		assertTrue("La checkbox valeur multiple par ressource n'est pas coché", page_critere.valeur_multiple_ressources_checkbox.isEnabled());
+		assertTrue("La checkbox hiérarchie n'est pas coché", page_critere.hierarchie_checkbox.isEnabled());
+		assertTrue("La checkbox activé n'est pas coché", page_critere.active_checkbox.isEnabled());
+
+		TechnicalTools.fillFields(page_critere.description_field, critere_description1);
+		page_critere.enregistrer_btn.click();
+		assertEquals("Le tableau ne s'est pas enregistré", "Types de critères Liste", page_critere.criteres_header.getText());
 		
+
 	}
 
 }

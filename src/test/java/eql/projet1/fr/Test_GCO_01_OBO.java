@@ -36,7 +36,7 @@ public class Test_GCO_01_OBO {
 		// connexion
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		PageIndex page_index = page_login.connect(driver, login, pswd);
-		assertTrue(page_index.calendrier_btn.isDisplayed());
+		assertTrue(page_index.calendrier_tab.isDisplayed());
 		
 		// accès à la page Type d'Heures
 		PageTypeHeures page_typeheures = page_index.accessTypeHeures(driver);
@@ -50,7 +50,14 @@ public class Test_GCO_01_OBO {
 		
 		// création d'un type d'heure
 		page_typeheures.creer_btn.click();
-		/// rédiger assert
+		assertTrue(page_typeheures.creer_title.getText().contains("Créer Type d'heures"));
+		assertTrue(page_typeheures.donneestypeheure_tab.getText().contains("Données du type d'heure de travail"));
+		
+		//
+		assertTrue(page_typeheures.code_td.getText().contains("Code"));
+		assertFalse(page_typeheures.code_field.getAttribute("disabled").isEmpty());
+		
+		
 
 		///findBy => champ nom & champ prix par def & btn rec
 		/// TT.fillField(nom_field, "Prix 1");

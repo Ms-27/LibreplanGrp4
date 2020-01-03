@@ -47,4 +47,14 @@ public abstract class PageAbstractMenu {
 		return PageFactory.initElements(d, PageCategoriesCout.class);
 	}
 
+	
+	public PageTypeAvancement accesTypeAvancement(WebDriver driver) {
+		
+		Actions a = new Actions (driver);
+		a.moveToElement(ressources_btn).build().perform();
+		WebElement TypeAvancement_btn = driver.findElement(By.xpath("//a[contains(@href, 'advanceTypes')]"));
+		a.moveToElement(TypeAvancement_btn).click().build().perform();
+		return PageFactory.initElements(driver, PageTypeAvancement.class);
+	}
+
 }

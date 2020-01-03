@@ -50,7 +50,14 @@ public class Test_GCO_01_OBO {
 		
 		// création d'un type d'heure
 		page_typeheures.creer_btn.click();
-		
+		/// rédiger assert
+
+		///findBy => champ nom & champ prix par def & btn rec
+		/// TT.fillField(nom_field, "Prix 1");
+		///	String s = page_XXX.nom_field.getAttribute("value");
+		/// TT.fillField(prixpardef_field, "");
+		/// page_XXX.rec_btn.click();
+
 		
 		
 		// déconnexion

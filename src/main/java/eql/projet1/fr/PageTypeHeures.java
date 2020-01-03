@@ -41,13 +41,22 @@ public class PageTypeHeures extends PageAbstractMenu {
 	WebElement code_chckbx_name;
 	
 	@FindBy (xpath="//span[contains(text(), 'Nom')]")
-	WebElement nom_td;	
+	WebElement nom_td;
+	
+	@FindBy (xpath="//td/div/input[not(@size)]")
+	WebElement nom_field;
 	
 	@FindBy (xpath="//span[contains(text(), 'Prix par défaut')]")
-	WebElement ppd_td;	
+	WebElement ppd_td;
+	
+	@FindBy (xpath="//input[@size='11']")
+	WebElement ppd_field;
 	
 	@FindBy (xpath="//span[contains(text(), 'Activé')]")
 	WebElement active_td;	
+	
+	@FindBy (xpath="//span[@style='width:300px;']/input[@type=\"checkbox\"]")
+	WebElement active_chckbx;
 	
 	@FindBy (xpath="//td[contains(text(), 'Enregistrer')]")
 	WebElement enregistrer_btn;

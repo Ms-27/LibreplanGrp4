@@ -7,7 +7,9 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 public class Test_GCO_01_OBO {
@@ -24,11 +26,11 @@ public class Test_GCO_01_OBO {
 
 	@After
 	public void tearDown() {
-		driver.quit();
+		//driver.quit();
 	}
 	
 	@Test
-	public void testConnexion() {
+	public void testGCO01() throws Exception{
 		// connexion à l'adresse de l'application
 		driver.get("http://localhost:8090/libreplan/");
 		assertEquals("Erreur titre de la page", "LibrePlan: accès utilisateur", driver.getTitle());
@@ -50,26 +52,54 @@ public class Test_GCO_01_OBO {
 		
 		// création d'un type d'heure
 		page_typeheures.creer_btn.click();
-		assertTrue("Erreur", page_typeheures.creer_title.getText().contains("Créer Type d'heures"));
-		assertTrue(page_typeheures.donneestypeheure_tab.getText().contains("Données du type d'heure de travail"));
+		// vérification du titre un d'un élément de la page
+		assertTrue("Erreur titre de section", page_typeheures.creer_title.getText().contains("Créer Type d'heures"));
+		assertTrue("Erreur titre d'onglet", page_typeheures.donneestypeheure_tab.getText().contains("Données du type d'heure de travail"));
 		
-		//
+		// 
 		assertTrue(page_typeheures.code_td.getText().contains("Code"));
 		assertFalse(page_typeheures.code_field.isEnabled());
 		assertFalse(page_typeheures.code_field.getAttribute("value").isEmpty());
 		
 		assertTrue(page_typeheures.code_chckbx.isDisplayed());
+		assertTrue("La checkbox Générer le code n'est pas cochée", page_typeheures.code_chckbx.isSelected());
 		assertTrue(page_typeheures.code_chckbx_name.getText().contains("Générer le code"));
-
-		///findBy => champ nom & champ prix par def & btn rec
-		/// TT.fillField(nom_field, "Prix 1");
-		///	String s = page_XXX.nom_field.getAttribute("value");
-		/// TT.fillField(prixpardef_field, "");
-		/// page_XXX.rec_btn.click();
-
+		
+		assertTrue(page_typeheures.nom_td.getText().contains("Nom"));
+		assertTrue(page_typeheures.nom_field.getAttribute("value").isEmpty());
+		assertTrue(page_typeheures.ppd_td.getText().contains("Prix par défaut"));
+		assertTrue(page_typeheures.ppd_field.getAttribute("value").isEmpty());
+		assertTrue(page_typeheures.active_td.getText().contains("Activé"));
+		assertTrue(page_typeheures.active_chckbx.isSelected());
+		
+		assertTrue(page_typeheures.enregistrer_btn.isDisplayed());
+		assertTrue(page_typeheures.savetcont_btn.isDisplayed());
+		assertTrue(page_typeheures.annuler_btn.isDisplayed());
+		
+		//
+		TechnicalTools.fillFields(page_typeheures.nom_field, "Prix 1");
+		String nom_copie = page_typeheures.nom_field.getAttribute("value");
+		driver.switchTo().defaultContent();
+		System.out.println(nom_copie);
+		Actions a = new Actions(driver);
+		a.moveToElement(page_typeheures.ppd_field).build().perform();
+		Thread.sleep(1000);
+		a.moveToElement(page_typeheures.ppd_field).sendKeys(nom_copie).build().perform();
+		
+		//TechnicalTools.fillFields(page_typeheures.ppd_field, nom_copie);
+		
+		Thread.sleep(2000);
+		page_typeheures.enregistrer_btn.click();
+		
+//		driver.findElement(By.xpath("//img[contains(@src, 'ico_borrar')]")).click();
+//		Thread.sleep(2000);
+		
+		
+		
+		
 		
 		
 		// déconnexion
-		page_index.signout_btn.click();
+		//page_index.signout_btn.click();
 	}
 }

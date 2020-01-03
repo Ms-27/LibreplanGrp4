@@ -1,7 +1,9 @@
 package eql.projet1.fr;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class PageTypeAvancement {
 
@@ -27,7 +29,7 @@ public class PageTypeAvancement {
 	WebElement nom_unite_th;
 	
 	@FindBy(xpath ="//span[contains(text(), 'Actif')] " )
-	WebElement actif_th;
+	WebElement actif_checkbox;
 	
 	@FindBy(xpath ="//span[contains(text(), 'Valeur maximum par défaut')]")
 	WebElement val_max_def_th;
@@ -55,7 +57,29 @@ public class PageTypeAvancement {
 	WebElement annuler_btn;
 
 	@FindBy(xpath="//input[contains(@class, 'focus-element')]")
-	WebElement champ_nom_unite;
+	WebElement nom_unite_input;
+	
+	@FindBy(xpath="//tr[3]/td[2]/div/input")
+	WebElement val_max_input;
+	
+	@FindBy(xpath="//tr[4]/td[2]/div/input")
+	WebElement precision_input;
 
+	@FindBy(xpath = "//span[contains(text(), 'User')]")
+	WebElement user_input;
+	
+	@FindBy(xpath = "//tr[6]/td[2]/div/span/input")
+	WebElement pourcentage_checkbox;
+	
+
+	
+	public PageTypeAvancement addTypeAvancement(WebDriver d, String nom, String val_max) {
+		TechnicalTools.fillFields(nom_unite_input, nom);
+		actif_checkbox.click();
+		TechnicalTools.fillFields(val_max_input, val_max);
+		enregistrer_btn.click();
+		
+		return PageFactory.initElements(d, PageTypeAvancement.class);
+	}
 
 }

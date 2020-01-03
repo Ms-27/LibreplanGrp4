@@ -30,4 +30,12 @@ public abstract class PageAbstractMenu {
 		a.moveToElement(typeheures_btn).click().build().perform();
 		return PageFactory.initElements(d, PageTypeHeures.class);
 	}
+	
+	public PageCritere accesCritere(WebDriver driver) {
+		Actions a = new Actions(driver);
+		a.moveToElement(ressources_btn).build().perform();
+		WebElement critere_btn = driver.findElement(By.xpath("//a[contains(@href, 'criterions')]"));
+		a.moveToElement(critere_btn).click().build().perform();
+		return PageFactory.initElements(driver, PageCritere.class);
+		}
 }

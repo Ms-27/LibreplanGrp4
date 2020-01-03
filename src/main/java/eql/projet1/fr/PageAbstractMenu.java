@@ -23,6 +23,9 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//button[contains(text(), 'Ressources')]")
 	WebElement ressources_btn;
 	
+	@FindBy (xpath="//td[@class='migas_linea']//span[contains(. , 'Détail du projet')]")
+	WebElement path_detail_project_menu;
+	
 	public PageTypeHeures accessTypeHeures(WebDriver d) {
 		Actions a = new Actions (d);
 		a.moveToElement(cout_btn).build().perform();

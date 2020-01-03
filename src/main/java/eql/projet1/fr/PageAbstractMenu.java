@@ -12,7 +12,7 @@ public abstract class PageAbstractMenu {
 	WebElement signout_btn;
 	
 	@FindBy (xpath="//button[contains(text(), 'Calendrier')]")
-	WebElement calendrier_btn;
+	WebElement calendrier_tab;
 	
 	@FindBy (xpath="//button[contains(text(), 'Coût')]")
 	WebElement cout_btn;
@@ -31,6 +31,7 @@ public abstract class PageAbstractMenu {
 		return PageFactory.initElements(d, PageTypeHeures.class);
 	}
 	
+<<<<<<< Updated upstream
 	public PageCritere accesCritere(WebDriver driver) {
 		Actions a = new Actions(driver);
 		a.moveToElement(ressources_btn).build().perform();
@@ -38,4 +39,13 @@ public abstract class PageAbstractMenu {
 		a.moveToElement(critere_btn).click().build().perform();
 		return PageFactory.initElements(driver, PageCritere.class);
 		}
+=======
+	public PageCategoriesCout accessCategoriesCout(WebDriver d) {
+		Actions a = new Actions (d);
+		a.moveToElement(cout_btn).build().perform();
+		WebElement categoriescout_btn = d.findElement(By.xpath("//a[contains(@href, 'costCategory')]"));
+		a.moveToElement(categoriescout_btn).click().build().perform();
+		return PageFactory.initElements(d, PageCategoriesCout.class);
+	}
+>>>>>>> Stashed changes
 }

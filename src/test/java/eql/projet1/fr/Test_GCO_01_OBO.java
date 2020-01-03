@@ -57,7 +57,10 @@ public class Test_GCO_01_OBO {
 		assertTrue(page_typeheures.code_td.getText().contains("Code"));
 		assertFalse(page_typeheures.code_field.getAttribute("disabled").isEmpty());
 		
+<<<<<<< Updated upstream
 		
+=======
+>>>>>>> Stashed changes
 
 		///findBy => champ nom & champ prix par def & btn rec
 		/// TT.fillField(nom_field, "Prix 1");

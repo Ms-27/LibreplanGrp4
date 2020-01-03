@@ -42,22 +42,22 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//input[contains(@style,'381px')]")
 	WebElement new_project_model_input;
 	
-	@FindBy (xpath="//input[contains(@class,'z-textbox-disd')]")
+	@FindBy (xpath="//table[@class='z-hbox']//input[contains(@class,'z-textbox')]")
 	WebElement new_project_code_input;
 	
-	@FindBy (xpath="//input[contains(@id,'Q48')]")
+	@FindBy (xpath="//input[@type='checkbox' and @checked='checked']")
 	WebElement new_project_code_checkbox;
 	
-	@FindBy (xpath="//input[contains(@id,'Qk9')]")
+	@FindBy (xpath="//tr[@class='z-row z-grid-odd']//input[@class='z-datebox-inp']")
 	WebElement new_project_date_input;
 	
-	@FindBy (xpath="//input[contains(@id,'Qn9')]")
+	@FindBy (xpath="//tr[@class='z-row']//input[@class='z-datebox-inp']")
 	WebElement new_project_deadline_input;
 	
-	@FindBy (xpath="//input[contains(@id,'Qs9')]")
+	@FindBy (xpath="//tr[@class='z-row z-grid-odd']//input[@style='width: 466px;']")
 	WebElement new_project_client_input;
 	
-	@FindBy (xpath="//input[contains(@id,'Q0a')]")
+	@FindBy (xpath="//tr[@class='z-row']//input[@class='z-combobox-inp']")
 	WebElement new_project_calendar_input;
 	
 	@FindBy (xpath="//span[contains(@class,'save-button')]")
@@ -65,6 +65,7 @@ public class PageIndex extends PageAbstractMenu {
 	
 	@FindBy (xpath="//span[contains(@class,'cancel-button')]")
 	WebElement new_project_cancel_btn;
+	
 	
 	
 }

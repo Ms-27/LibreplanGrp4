@@ -40,6 +40,10 @@ public class Test_PRO_TA_01_JRE {
 			page_index.new_project_btn.click();
 			assertEquals("Créer un nouveau projet", page_index.name_popup.getText());
 			
+			page_index.new_project_code_checkbox.click();
+			TechnicalTools.fillFiels(page_index.new_project_name_input, "PROJET_TEST1");
+			
+			TechnicalTools.fillFiels(page_index.new_project_code_input, "PRJTEST001");
 			
 			
 			//page_index.signout_btn.click();
@@ -47,3 +51,4 @@ public class Test_PRO_TA_01_JRE {
 	}
 
 
+ 

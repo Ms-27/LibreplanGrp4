@@ -64,12 +64,32 @@ public class Test_PRO_TA_01_JRE {
 			int itoday_date = Integer.parseInt(today_date);
 			int new_start_date = itoday_date + 5;			
 			page_index.dayWanted(driver, new_start_date);
-			
 			page_index.new_project_end_calendar_btn.click();
 			int new_end_date = itoday_date + 15;
 			page_index.dayWanted(driver, new_end_date);
 			
 			page_index.new_project_save_btn.click();
+			
+			assertEquals("Détail du projet",page_index.path_detail_project_menu.getText());
+			
+			
+			//Step4
+			assertTrue(page_index.plan_project_left_menu.isDisplayed());
+			assertTrue(page_index.detail_project_left_menu.isDisplayed());
+			assertTrue(page_index.resources_project_left_menu.isDisplayed());
+			assertTrue(page_index.allowances_project_left_menu.isDisplayed());
+			assertTrue(page_index.board_project_left_menu.isDisplayed());
+			
+			//Step5
+			assertTrue(page_index.WBS_project_tab.isDisplayed());
+			assertTrue(page_index.data_project_tab.isDisplayed());
+			assertTrue(page_index.cost_project_tab.isDisplayed());
+			assertTrue(page_index.advancement_project_tab.isDisplayed());
+			assertTrue(page_index.wording_project_tab.isDisplayed());
+			assertTrue(page_index.requirement_project_tab.isDisplayed());
+			assertTrue(page_index.material_project_tab.isDisplayed());
+			assertTrue(page_index.task_project_tab.isDisplayed());
+			assertTrue(page_index.auth_project_tab.isEnabled());
 			
 			//page_index.signout_btn.click();
 		}

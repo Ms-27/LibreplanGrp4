@@ -20,27 +20,6 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//div[contains(@class,'z-window-modal-header')]")
 	WebElement name_popup;
 	
-	@FindBy (xpath="//span/text()[contains(.,'Nom')]")
-	WebElement new_project_name;
-	
-	@FindBy (xpath="//span/text()[contains(.,'Modèle')]")
-	WebElement new_project_model;
-	
-	@FindBy (xpath="//span/text()[contains(.,'Code')]")
-	WebElement new_project_code;
-	
-	@FindBy (xpath="//span/text()[contains(.,'Date')]")
-	WebElement new_project_date;
-	
-	@FindBy (xpath="//span/text()[contains(.,'Echéance')]")
-	WebElement new_project_deadline;
-	
-	@FindBy (xpath="//span/text()[contains(.,'Client')]")
-	WebElement new_project_client;
-	
-	@FindBy (xpath="//span/text()[contains(.,'Calendrier')]")
-	WebElement new_project_calendar;
-	
 	@FindBy (xpath="//div[contains(@id,'-cell')]/input")
 	WebElement new_project_name_input;
 	
@@ -84,6 +63,49 @@ public class PageIndex extends PageAbstractMenu {
 		WebElement date_wanted = driver.findElement(By.xpath("//div[@class='z-datebox-pp z-datebox-shadow']//td[contains(@class, 'z-calendar-wk') and @_dt='"+day_date_wanted+"']"));
 		date_wanted.click();
 	}
+	
+	@FindBy (xpath="//td[contains(text() , 'Planification de projet')]")
+	WebElement plan_project_left_menu;
+	
+	@FindBy (xpath="//td[contains(text() , 'Détail du projet')]")
+	WebElement detail_project_left_menu;
+	
+	@FindBy (xpath="//td[contains(text() , 'Chargement des ressources')]")
+	WebElement resources_project_left_menu;
+	
+	@FindBy (xpath="//td[contains(text() , 'Allocation avancée')]")
+	WebElement allowances_project_left_menu;
+	
+	@FindBy (xpath="//td[contains(text() , 'Tableau de bord')]")
+	WebElement board_project_left_menu;
+	
+	@FindBy (xpath="//span[contains(text() , 'WBS (tâches)')]")
+	WebElement WBS_project_tab;
+	
+	@FindBy (xpath="//span[contains(text() , 'Données générales')]")
+	WebElement data_project_tab;
+	
+	@FindBy (xpath="//span[contains(text() , 'Coût')]")
+	WebElement cost_project_tab;
+	
+	@FindBy (xpath="//span[contains(text() , 'Avancement')]")
+	WebElement advancement_project_tab;
+	
+	@FindBy (xpath="//span[contains(text() , 'Libellés')]")
+	WebElement wording_project_tab;
+	
+	@FindBy (xpath="//span[contains(text() , 'Exigence de critère')]")
+	WebElement requirement_project_tab;
+
+	@FindBy (xpath="//span[contains(text() , 'Matériels')]")
+	WebElement material_project_tab;
+
+	@FindBy (xpath="//span[contains(text() , 'Formulaires qualité des tâches')]")
+	WebElement task_project_tab;
+
+	@FindBy (xpath="//span[contains(text() , 'Autorisation')]")
+	WebElement auth_project_tab;
+	
 	
 	
 	

@@ -20,6 +20,9 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//td[@class='usuario'][contains(text(), 'utilisateur')]")
 	WebElement user_txt;
 	
+	@FindBy (xpath="//button[contains(text(), 'Ressources')]")
+	WebElement ressources_btn;
+	
 	public PageTypeHeures accessTypeHeures(WebDriver d) {
 		Actions a = new Actions (d);
 		a.moveToElement(cout_btn).build().perform();

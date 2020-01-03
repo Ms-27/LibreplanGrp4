@@ -25,14 +25,15 @@ public class Test_CRI_01_CGA {
 	String filePath = "src/test/snapshots/debug_participant.png";
 
 	@Before
-	public void startup() {
+	public void startup() throws Exception {
 		driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
 	@After
-	public void teardDown() {
+	public void teardDown() throws Exception {
 		driver.quit();
+		BddConnexion.deleteAllData("src/test/JDD/nettoyage_criterion_type.xml");
 	}
 
 	@Test

@@ -1,3 +1,4 @@
 /target/
 /src/test/resources/drivers/*
 /src/test/ressources/
+/src/test/snapshots/

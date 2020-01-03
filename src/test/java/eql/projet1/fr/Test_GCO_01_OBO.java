@@ -36,21 +36,30 @@ public class Test_GCO_01_OBO {
 		// connexion
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		PageIndex page_index = page_login.connect(driver, login, pswd);
-		assertTrue(page_index.calendrier_btn.isDisplayed());
+		assertTrue("l'onglet calendrier ne s'affiche pas", page_index.calendrier_tab.isDisplayed());
 		
 		// accès à la page Type d'Heures
 		PageTypeHeures page_typeheures = page_index.accessTypeHeures(driver);
 		assertEquals("Erreur titre de la page", "LibrePlan: Types d'heures", driver.getTitle());
-		assertTrue(page_typeheures.code_th.isDisplayed());
-		assertTrue(page_typeheures.ndt_th.isDisplayed());
-		assertTrue(page_typeheures.ppd_th.isDisplayed());
-		assertTrue(page_typeheures.active_th.isDisplayed());
-		assertTrue(page_typeheures.actions_th.isDisplayed());
-		assertTrue(page_typeheures.creer_btn.isDisplayed());
+		assertTrue("Code: ne s'affiche pas en titre de colonne",page_typeheures.code_th.isDisplayed());
+		assertTrue("Nom de type: ne s'affiche pas en titre de colonne",page_typeheures.ndt_th.isDisplayed());
+		assertTrue("Prix par défaut: ne s'affiche pas en titre de colonne",page_typeheures.ppd_th.isDisplayed());
+		assertTrue("Activé: ne s'affiche pas en titre de colonne",page_typeheures.active_th.isDisplayed());
+		assertTrue("Actions: ne s'affiche pas en titre de colonne",page_typeheures.actions_th.isDisplayed());
+		assertTrue("Le bouton Créer ne s'affiche pas",page_typeheures.creer_btn.isDisplayed());
 		
 		// création d'un type d'heure
 		page_typeheures.creer_btn.click();
-		/// rédiger assert
+		assertTrue("Erreur", page_typeheures.creer_title.getText().contains("Créer Type d'heures"));
+		assertTrue(page_typeheures.donneestypeheure_tab.getText().contains("Données du type d'heure de travail"));
+		
+		//
+		assertTrue(page_typeheures.code_td.getText().contains("Code"));
+		assertFalse(page_typeheures.code_field.isEnabled());
+		assertFalse(page_typeheures.code_field.getAttribute("value").isEmpty());
+		
+		assertTrue(page_typeheures.code_chckbx.isDisplayed());
+		assertTrue(page_typeheures.code_chckbx_name.getText().contains("Générer le code"));
 
 		///findBy => champ nom & champ prix par def & btn rec
 		/// TT.fillField(nom_field, "Prix 1");

@@ -16,8 +16,8 @@ public class PageLogin extends PageAbstractMenu {
 	WebElement mdp_field;
 	
 	public PageIndex connect(WebDriver d, String s, String p) {
-		TechnicalTools.fillFiels(utilisateur_field, s);
-		TechnicalTools.fillFiels(mdp_field, p);
+		TechnicalTools.fillFields(utilisateur_field, s);
+		TechnicalTools.fillFields(mdp_field, p);
 		seconnecter_btn.click();
 		return PageFactory.initElements(d, PageIndex.class);
 	}

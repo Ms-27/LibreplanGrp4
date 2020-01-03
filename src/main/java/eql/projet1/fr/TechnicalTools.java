@@ -28,7 +28,7 @@ static WebDriver driver;
 		}
 	}
 	
-	public static void fillFiels(WebElement e, String s) {
+	public static void fillFields(WebElement e, String s) {
 		e.clear();
 		e.sendKeys(s);
 	}

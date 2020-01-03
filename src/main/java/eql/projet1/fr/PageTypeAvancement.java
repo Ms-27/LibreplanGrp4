@@ -1,7 +1,9 @@
 package eql.projet1.fr;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class PageTypeAvancement {
 
@@ -68,5 +70,16 @@ public class PageTypeAvancement {
 	
 	@FindBy(xpath = "//tr[6]/td[2]/div/span/input")
 	WebElement pourcentage_checkbox;
+	
+
+	
+	public PageTypeAvancement addTypeAvancement(WebDriver d, String nom, String val_max) {
+		TechnicalTools.fillFields(nom_unite_input, nom);
+		actif_checkbox.click();
+		TechnicalTools.fillFields(val_max_input, val_max);
+		enregistrer_btn.click();
+		
+		return PageFactory.initElements(d, PageTypeAvancement.class);
+	}
 
 }

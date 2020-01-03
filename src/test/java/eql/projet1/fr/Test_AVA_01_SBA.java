@@ -18,6 +18,10 @@ public class Test_AVA_01_SBA {
 	String val_max = "100,00";
 	String precision = "0,1000";
 	
+	String nom_unite = "Type avancement - Test 1";
+	String val_max_defaut = "10,00";
+	
+	
 	@Before
 	public void startup() {
 		driver = TechnicalTools.setBrowser(EBrowser.chrome);
@@ -26,7 +30,7 @@ public class Test_AVA_01_SBA {
 	
 	@After
 	public void teardDown() {
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
@@ -65,16 +69,19 @@ public class Test_AVA_01_SBA {
 								
 				System.out.println(page_typeavancement.user_input.getAttribute("value"));
 				assertEquals("La valeur User est modifiable",null,page_typeavancement.user_input.getAttribute("value"));
-				assertFalse("La case pourcentage n'est pas cochée",page_typeavancement.pourcentage_checkbox.isSelected());
+				
+				assertFalse("La case pourcentage est cochée",page_typeavancement.pourcentage_checkbox.isSelected());
 				
 				
 				assertTrue("Le bouton Enregistrer n'est pas présent", page_typeavancement.enregistrer_btn.isEnabled());
 				assertTrue("Le bouton Sauver et continuer n'est pas présent", page_typeavancement.sauver_btn.isEnabled());
-				assertTrue("Le bouton Sauver et continuer n'est pas présent", page_typeavancement.annuler_btn.isEnabled());
+				assertTrue("Le bouton Annuler n'est pas présent", page_typeavancement.annuler_btn.isEnabled());
 				
 				
 				// création d'un type d'avancement - sans pourcentage 
-				
+				page_typeavancement = page_typeavancement.addTypeAvancement(driver, nom_unite, val_max_defaut);
+				assertEquals("Le Type d'avancement ne s'est pas chargé", "Types d'avancement Liste", page_typeavancement.avancement_header.getText());
+
 	}
 	
 

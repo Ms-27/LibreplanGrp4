@@ -8,7 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
@@ -78,25 +80,27 @@ public class Test_GCO_01_OBO {
 		
 		//
 		TechnicalTools.fillFields(page_typeheures.nom_field, "Prix 1");
-		String nom_copie = page_typeheures.nom_field.getAttribute("value");
-		driver.switchTo().defaultContent();
-		System.out.println(nom_copie);
+		
 		Actions a = new Actions(driver);
-		a.moveToElement(page_typeheures.ppd_field).build().perform();
-		Thread.sleep(1000);
-		a.moveToElement(page_typeheures.ppd_field).sendKeys(nom_copie).build().perform();
-		
-		//TechnicalTools.fillFields(page_typeheures.ppd_field, nom_copie);
-		
-		Thread.sleep(2000);
+		a.moveToElement(page_typeheures.nom_field).click().build().perform();
+		page_typeheures.nom_field.sendKeys(Keys.CONTROL + "a");
+		page_typeheures.nom_field.sendKeys(Keys.CONTROL + "c");
+		a.moveToElement(page_typeheures.ppd_field).click().build().perform();
+		page_typeheures.ppd_field.sendKeys(Keys.CONTROL + "v");
 		page_typeheures.enregistrer_btn.click();
+		
+		//assert message d'erreur
+		
+		TechnicalTools.fillFields(page_typeheures.ppd_field, "150");
+		//assertTrue(page_typeheures.ppd_field.getText().contains("150"));
+		
+		page_typeheures.code_chckbx.click();
+		a.moveToElement(page_typeheures.code_field).click().build().perform();
+		TechnicalTools.fillFields(page_typeheures.code_field, "code-de-test");
+		//page_typeheures.enregistrer_btn.click();
 		
 //		driver.findElement(By.xpath("//img[contains(@src, 'ico_borrar')]")).click();
 //		Thread.sleep(2000);
-		
-		
-		
-		
 		
 		
 		// déconnexion

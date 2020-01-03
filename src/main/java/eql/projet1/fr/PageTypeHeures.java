@@ -49,7 +49,7 @@ public class PageTypeHeures extends PageAbstractMenu {
 	@FindBy (xpath="//span[contains(text(), 'Prix par défaut')]")
 	WebElement ppd_td;
 	
-	@FindBy (xpath="//input[@size='11']")
+	@FindBy (xpath="//td/div/input[@size]")
 	WebElement ppd_field;
 	
 	@FindBy (xpath="//span[contains(text(), 'Activé')]")

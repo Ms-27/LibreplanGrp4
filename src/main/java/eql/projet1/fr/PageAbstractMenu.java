@@ -52,7 +52,6 @@ public abstract class PageAbstractMenu {
 
 	
 	public PageTypeAvancement accesTypeAvancement(WebDriver driver) {
-		
 		Actions a = new Actions (driver);
 		a.moveToElement(ressources_btn).build().perform();
 		WebElement TypeAvancement_btn = driver.findElement(By.xpath("//a[contains(@href, 'advanceTypes')]"));

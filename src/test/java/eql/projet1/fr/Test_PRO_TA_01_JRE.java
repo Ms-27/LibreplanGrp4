@@ -45,6 +45,8 @@ public class Test_PRO_TA_01_JRE {
 			assertFalse(page_index.new_project_code_input.isEnabled());
 			assertFalse(page_index.new_project_code_input.getAttribute("value").isEmpty());
 			assertTrue(page_index.new_project_code_checkbox.isSelected());
+			assertEquals(TechnicalTools.todayDate(), page_index.new_project_date_input.getAttribute("value"));
+			
 			
 			page_index.new_project_code_checkbox.click();
 			
@@ -61,6 +63,7 @@ public class Test_PRO_TA_01_JRE {
 			page_index.new_project_end_calendar_btn.click();
 			int new_end_date = itoday_date + 15;
 			page_index.dayWanted(driver, new_end_date);
+			
 			
 			//page_index.new_project_save_btn.click();
 			

@@ -8,6 +8,12 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.io.File;
 
+import java.text.SimpleDateFormat;
+
+
+import java.util.Date;
+
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -49,5 +55,12 @@ public class TechnicalTools {
 		File DestFile = new File(fileWithPath);
 		// Copy file at destination
 		FileUtils.copyFile(SrcFile, DestFile);
+	}
+	
+	public static String todayDate() {
+		Date aujourdhui = new Date();
+		SimpleDateFormat formater = null;	
+		formater = new SimpleDateFormat("d MMM yyyy");
+		return formater.format(aujourdhui);
 	}
 }

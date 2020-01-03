@@ -106,6 +106,11 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//span[contains(text() , 'Autorisation')]")
 	WebElement auth_project_tab;
 	
+	@FindBy (xpath="//img[contains(@src , 'ico_save.png')]")
+	WebElement save_project_ico;
+	
+	
+	
 	
 	
 	

@@ -91,6 +91,9 @@ public class Test_PRO_TA_01_JRE {
 			assertTrue(page_index.task_project_tab.isDisplayed());
 			assertTrue(page_index.auth_project_tab.isEnabled());
 			
+			//Step6
+			System.out.println(page_index.save_project_ico.getAttribute("alt"));
+			
 			//page_index.signout_btn.click();
 		}
 	}

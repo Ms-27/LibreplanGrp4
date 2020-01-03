@@ -37,5 +37,17 @@ public class PageCritere {
 	
 	@FindBy(xpath = "//td[contains(text(), 'Annuler')]")
 	WebElement annuler_btn;
+	
+	@FindBy(xpath = "//div[contains(@class, 'row-cnt')]/input[@class=\"z-textbox\"]")
+	WebElement nom_input;
+	
+	@FindBy(xpath = "//input[@class='z-combobox-inp']")
+	WebElement type_input;
+	
+	@FindBy(xpath = "//i[@class=\"z-combobox-btn\"]")
+	WebElement type_dropdown_btn;
+	
+	@FindBy(xpath = "//td[contains(text(), 'PARTICIPANT')]")
+	WebElement participant_ddm_content;
 
 }

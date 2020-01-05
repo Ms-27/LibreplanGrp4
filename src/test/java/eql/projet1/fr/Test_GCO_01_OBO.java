@@ -59,24 +59,24 @@ public class Test_GCO_01_OBO {
 		assertTrue("Erreur titre d'onglet", page_typeheures.donneestypeheure_tab.getText().contains("Données du type d'heure de travail"));
 		
 		// 
-		assertTrue(page_typeheures.code_td.getText().contains("Code"));
-		assertFalse(page_typeheures.code_field.isEnabled());
-		assertFalse(page_typeheures.code_field.getAttribute("value").isEmpty());
+		assertTrue("Pas d'affichage titre ligne: Code", page_typeheures.code_td.getText().contains("Code"));
+		assertFalse("Le champ Code est éditable", page_typeheures.code_field.isEnabled());
+		assertFalse("Le champ Code est vide", page_typeheures.code_field.getAttribute("value").isEmpty());
 		
-		assertTrue(page_typeheures.code_chckbx.isDisplayed());
+		assertTrue("La checkbox Cod n'est pas présente", page_typeheures.code_chckbx.isDisplayed());
 		assertTrue("La checkbox Générer le code n'est pas cochée", page_typeheures.code_chckbx.isSelected());
-		assertTrue(page_typeheures.code_chckbx_name.getText().contains("Générer le code"));
+		assertTrue("Le nom de la checkbox Code n'est pas le bon", page_typeheures.code_chckbx_name.getText().contains("Générer le code"));
 		
-		assertTrue(page_typeheures.nom_td.getText().contains("Nom"));
-		assertTrue(page_typeheures.nom_field.getAttribute("value").isEmpty());
-		assertTrue(page_typeheures.ppd_td.getText().contains("Prix par défaut"));
-		assertTrue(page_typeheures.ppd_field.getAttribute("value").isEmpty());
-		assertTrue(page_typeheures.active_td.getText().contains("Activé"));
-		assertTrue(page_typeheures.active_chckbx.isSelected());
+		assertTrue("Pas d'affichage titre ligne: Nom", page_typeheures.nom_td.getText().contains("Nom"));
+		assertTrue("Le champ Nom n'est pas vide", page_typeheures.nom_field.getAttribute("value").isEmpty());
+		assertTrue("Pas d'affichage titre ligne: Prix par défaut", page_typeheures.ppd_td.getText().contains("Prix par défaut"));
+		assertTrue("Le champ Prix par défaut n'est pas vide", page_typeheures.ppd_field.getAttribute("value").isEmpty());
+		assertTrue("Pas d'affichage titre ligne: Activé", page_typeheures.active_td.getText().contains("Activé"));
+		assertTrue("Le champ Prix par défaut n'est pas vide", page_typeheures.active_chckbx.isSelected());
 		
-		assertTrue(page_typeheures.enregistrer_btn.isDisplayed());
-		assertTrue(page_typeheures.savetcont_btn.isDisplayed());
-		assertTrue(page_typeheures.annuler_btn.isDisplayed());
+		assertTrue("Bouton Enregistrer non présent", page_typeheures.enregistrer_btn.isDisplayed());
+		assertTrue("Bouton Sauver et continuer non présent", page_typeheures.savetcont_btn.isDisplayed());
+		assertTrue("Bouton Annuler non présent", page_typeheures.annuler_btn.isDisplayed());
 		
 		//
 		TechnicalTools.fillFields(page_typeheures.nom_field, "Prix 1");
@@ -90,6 +90,10 @@ public class Test_GCO_01_OBO {
 		page_typeheures.enregistrer_btn.click();
 		
 		//assert message d'erreur
+		/// tester présence élt flèche
+		/// tester présence élt croix
+		/// tester couleur cadre
+		/// tester txt
 		
 		TechnicalTools.fillFields(page_typeheures.ppd_field, "150");
 		//assertTrue(page_typeheures.ppd_field.getText().contains("150"));
@@ -101,7 +105,6 @@ public class Test_GCO_01_OBO {
 		
 //		driver.findElement(By.xpath("//img[contains(@src, 'ico_borrar')]")).click();
 //		Thread.sleep(2000);
-		
 		
 		// déconnexion
 		//page_index.signout_btn.click();

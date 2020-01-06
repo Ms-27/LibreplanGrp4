@@ -1,7 +1,11 @@
 package eql.projet1.fr;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
 public class PageTypeHeures extends PageAbstractMenu {
 	@FindBy (xpath="//div[contains(text(), 'Code')]")
@@ -66,4 +70,23 @@ public class PageTypeHeures extends PageAbstractMenu {
 	
 	@FindBy (xpath="//td[contains(text(), 'Annuler')]")
 	WebElement annuler_btn;
+	
+	@FindBy (xpath="//div[contains(@class, 'z-arrow')]")
+	WebElement arrow_alert;
+	
+	@FindBy (xpath="//div[contains(@class, '-close')]")
+	WebElement cross_alert;
+	
+	@FindBy (xpath="//div[contains(text(), 'Vous devez spécifier un nombre au lieu de Prix 1.')]")
+	WebElement msg_alert1;
+	
+	@FindBy (xpath="//div[contains(text(), 'ne peut pas être vide')]")
+	WebElement msg_alert2;
+	
+	// 
+	@FindBy (xpath="//img[contains(@src, 'ico_borrar')]")
+    WebElement img_trash;
+	
+	@FindBy (xpath="//td[text()='OK']")
+	WebElement Ok_del_btn;
 }

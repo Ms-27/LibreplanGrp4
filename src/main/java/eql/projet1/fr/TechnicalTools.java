@@ -10,10 +10,9 @@ import org.slf4j.Logger;
 import junit.framework.Assert;
 
 import java.io.File;
-
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
-
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -60,13 +59,23 @@ public class TechnicalTools {
 		FileUtils.copyFile(SrcFile, DestFile);
 	}
 	
-	public static String todayDate() {
-		Date aujourdhui = new Date();
-		SimpleDateFormat formater = null;	
-		formater = new SimpleDateFormat("d MMM yyyy");
-		return formater.format(aujourdhui);
-	}
+	private static final DateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
 	
+    public static String dayDate(int nbrjour) {
+
+        Date currentDate = new Date();
+        // convert date to calendar
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        // manipulate date
+        c.add(Calendar.DATE, nbrjour); //ajout du nombre de jour necessaire
+        // convert calendar to date
+        Date currentDatePlusOne = c.getTime();
+
+         return dateFormat.format(currentDatePlusOne);
+        
+    }
+    
 	public static void assertTrueLogger(Logger l, String s, boolean b) {
 		if (! b) {
 			l.error(s);

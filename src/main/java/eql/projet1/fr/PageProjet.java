@@ -75,7 +75,30 @@ public class PageProjet extends PageAbstractMenu {
 	
 	//fin popup
 	
-	@FindBy (xpath="//span[contains(text(), 'PROJET_TEST1')]")
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']")
+	WebElement first_project;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[1]//span")
 	WebElement project_name;
 	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[2]//span")
+	WebElement project_code;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[3]//span")
+	WebElement project_start_date;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[4]//span")
+	WebElement project_end_date;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[5]//span")
+	WebElement project_client;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[6]//span")
+	WebElement project_budget;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[7]//span")
+	WebElement project_hour;
+	
+	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[8]//span")
+	WebElement project_state;
 }

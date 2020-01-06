@@ -47,7 +47,7 @@ public class Test_PRO_TA_01_JRE {
 			assertFalse(page_index.new_project_code_input.isEnabled());
 			assertFalse(page_index.new_project_code_input.getAttribute("value").isEmpty());
 			assertTrue(page_index.new_project_code_checkbox.isSelected());
-			assertEquals(TechnicalTools.todayDate(), page_index.new_project_date_input.getAttribute("value"));
+			assertEquals(TechnicalTools.dayDate(0), page_index.new_project_date_input.getAttribute("value"));
 			assertTrue(page_index.new_project_deadline_input.getAttribute("value").isEmpty());	
 			assertTrue(page_index.new_project_client_input.getText().isEmpty());	
 			assertEquals("Default",page_index.new_project_calendar_input.getAttribute("value") );
@@ -131,13 +131,19 @@ public class Test_PRO_TA_01_JRE {
 			//Step11
 			page_projet.cancel_conf_cancel_btn_popup.click();
 			page_projet.accesProject(driver);
-			assertTrue(page_projet.project_name.isDisplayed());
+			assertTrue(page_projet.first_project.isDisplayed());
 			assertTrue(page_projet.list_project_left_menu.isDisplayed());
 			
 			
 			//Step12
 			assertEquals(project_name, page_projet.project_name.getText());
-			
+			assertEquals(project_code, page_projet.project_code.getText());
+			assertEquals(TechnicalTools.dayDate(5), page_projet.project_start_date.getText());
+			assertEquals(TechnicalTools.dayDate(15), page_projet.project_end_date.getText());
+			assertTrue(page_projet.project_client.getText().isEmpty());
+			assertEquals("0 €", page_projet.project_budget.getText());
+			assertEquals("0", page_projet.project_hour.getText());
+			assertEquals("PRE-VENTES", page_projet.project_state.getText());
 			//page_index.signout_btn.click();
 		}
 	}

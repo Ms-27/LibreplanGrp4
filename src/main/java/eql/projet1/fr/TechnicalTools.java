@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.slf4j.Logger;
 
 import java.io.File;
 
@@ -62,5 +63,23 @@ public class TechnicalTools {
 		SimpleDateFormat formater = null;	
 		formater = new SimpleDateFormat("d MMM yyyy");
 		return formater.format(aujourdhui);
+	}
+	
+	public static void assertTrueLogger(Logger l, String s, boolean b) {
+		if (! b) {
+			l.error(s);
+		}
+	}
+	
+	public static void assertFalseLogger(Logger l, String s, boolean b) {
+		if (b) {
+			l.error(s);
+		}
+	}
+	
+	public static void assertEqualsLogger(Logger l, String s, Object expected, Object actual) {
+		if (expected != actual) {
+			l.error(s);
+		}
 	}
 }

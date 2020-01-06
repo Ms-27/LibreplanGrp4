@@ -31,7 +31,7 @@ public class Test_GCO_01_OBO {
 
 	@After
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 	
 	@Test
@@ -48,6 +48,8 @@ public class Test_GCO_01_OBO {
 		// accès à la page Type d'Heures
 		PageTypeHeures page_typeheures = page_index.accessTypeHeures(driver);
 		assertEquals("Erreur titre de la page", "LibrePlan: Types d'heures", driver.getTitle());
+		TechnicalTools.assertEqualsLogger(logger, "Erreur titre de la page", "Castorama", driver.getTitle());
+		TechnicalTools.assertEqualsLogger(logger, "Erreur titre de la page", "LibrePlan: Types d'heures", driver.getTitle());
 		assertTrue("Code: ne s'affiche pas en titre de colonne",page_typeheures.code_th.isDisplayed());
 		assertTrue("Nom de type: ne s'affiche pas en titre de colonne",page_typeheures.ndt_th.isDisplayed());
 		assertTrue("Prix par défaut: ne s'affiche pas en titre de colonne",page_typeheures.ppd_th.isDisplayed());
@@ -63,7 +65,9 @@ public class Test_GCO_01_OBO {
 		
 		// 
 		assertTrue("Pas d'affichage titre ligne: Code", page_typeheures.code_td.getText().contains("Code"));
+		TechnicalTools.assertFalseLogger(logger,"Pas d'affichage titre ligne: Code", page_typeheures.code_td.getText().contains("Code"));
 		assertFalse("Le champ Code est éditable", page_typeheures.code_field.isEnabled());
+		TechnicalTools.assertTrueLogger(logger, "Le champ Code est éditable", page_typeheures.code_field.isEnabled());
 		assertFalse("Le champ Code est vide", page_typeheures.code_field.getAttribute("value").isEmpty());
 		
 		assertTrue("La checkbox Cod n'est pas présente", page_typeheures.code_chckbx.isDisplayed());
@@ -99,7 +103,10 @@ public class Test_GCO_01_OBO {
 		/// tester txt
 		
 		TechnicalTools.fillFields(page_typeheures.ppd_field, "150");
-		//assertTrue(page_typeheures.ppd_field.getText().contains("150"));
+		page_typeheures.ppd_field.sendKeys(Keys.TAB);
+		Thread.sleep(2000);
+		//assertTrue(page_typeheures.ppd_field.getText().contains("150 €"));
+		//assertTrue(page_typeheures.ppd_field.getText().equals("150 €"));
 		
 		page_typeheures.code_chckbx.click();
 		a.moveToElement(page_typeheures.code_field).click().build().perform();
@@ -110,6 +117,6 @@ public class Test_GCO_01_OBO {
 //		Thread.sleep(2000);
 		
 		// déconnexion
-		//page_index.signout_btn.click();
+		page_index.signout_btn.click();
 	}
 }

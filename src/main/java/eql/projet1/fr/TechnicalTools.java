@@ -7,6 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.slf4j.Logger;
 
+import junit.framework.Assert;
+
 import java.io.File;
 
 import java.text.SimpleDateFormat;
@@ -68,18 +70,21 @@ public class TechnicalTools {
 	public static void assertTrueLogger(Logger l, String s, boolean b) {
 		if (! b) {
 			l.error(s);
+			throw new AssertionError(s);
 		}
 	}
 	
 	public static void assertFalseLogger(Logger l, String s, boolean b) {
 		if (b) {
 			l.error(s);
+			throw new AssertionError(s);
 		}
 	}
 	
 	public static void assertEqualsLogger(Logger l, String s, Object expected, Object actual) {
-		if (expected != actual) {
+		if (!(expected.equals(actual))) {
 			l.error(s);
+			throw new AssertionError(s);
 		}
 	}
 }

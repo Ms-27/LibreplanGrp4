@@ -131,6 +131,13 @@ public class Test_PRO_TA_01_JRE {
 			//Step11
 			page_projet.cancel_conf_cancel_btn_popup.click();
 			page_projet.accesProject(driver);
+			assertTrue(page_projet.project_name.isDisplayed());
+			assertTrue(page_projet.list_project_left_menu.isDisplayed());
+			
+			
+			//Step12
+			assertEquals(project_name, page_projet.project_name.getText());
+			
 			//page_index.signout_btn.click();
 		}
 	}

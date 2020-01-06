@@ -11,6 +11,9 @@ public class PageProjet extends PageAbstractMenu {
 	@FindBy (xpath="//td[contains(text() , 'Détail du projet')]")
 	WebElement detail_project_left_menu;
 	
+	@FindBy (xpath="//td[contains(text() , 'Liste des projets')]")
+	WebElement list_project_left_menu;
+	
 	@FindBy (xpath="//td[contains(text() , 'Chargement des ressources')]")
 	WebElement resources_project_left_menu;
 	
@@ -70,6 +73,9 @@ public class PageProjet extends PageAbstractMenu {
 	@FindBy (xpath="//span[@class=\"z-messagebox-btn z-button\"]//td[contains(text(), 'Annuler')]")
 	WebElement cancel_conf_cancel_btn_popup;
 	
+	//fin popup
 	
+	@FindBy (xpath="//span[contains(text(), 'PROJET_TEST1')]")
+	WebElement project_name;
 	
 }

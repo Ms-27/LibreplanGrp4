@@ -65,7 +65,8 @@ public class PageIndex extends PageAbstractMenu {
 	}
 	
 	
-	
+	@FindBy (xpath="//td[contains(text() , 'Liste des projets')]")
+	WebElement list_project_left_menu;
 	
 	
 	

@@ -26,6 +26,9 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//td[@class='migas_linea']//span[contains(. , 'Détail du projet')]")
 	WebElement path_detail_project_menu;
 	
+	@FindBy (xpath="//td[@class='migas_linea']//span[contains(. , 'PROJET')]")
+	WebElement path_name_project_menu;
+	
 	
 	
 	public PageTypeHeures accessTypeHeures(WebDriver d) {

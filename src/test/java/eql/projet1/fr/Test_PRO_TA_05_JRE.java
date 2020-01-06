@@ -18,6 +18,7 @@ public class Test_PRO_TA_05_JRE {
 	String pswd = "admin";
 	String project_name = "PROJET_TEST1";
 	String project_code = "PRJTEST001";
+	String snap_path = "src/test/snapshots/debug.png";
 
 	@Before
 	public void setUp() {
@@ -31,7 +32,7 @@ public class Test_PRO_TA_05_JRE {
 	}
 
 	@Test
-	public void testCreationProjet() throws InterruptedException {
+	public void testCreationProjet() throws Exception {
 		//Step1
 		driver.get("http://localhost:8090/libreplan/");
 		assertEquals("Erreur titre de la page", "LibrePlan: accès utilisateur", driver.getTitle());	
@@ -71,7 +72,7 @@ public class Test_PRO_TA_05_JRE {
 		assertTrue(page_index.checkbox3_print_popup.isSelected());
 		assertTrue(page_index.checkbox4_print_popup.isSelected());
 		assertTrue(page_index.checkbox5_print_popup.isSelected());
-		assertTrue(page_index.checkbox6_print_popup.isSelected());
+		assertTrue(page_index.checkbox6_print_popup.isSelected()); 
 		assertEquals("Merci de vous rappeler que seules les modifications enregistrées seront affichées", page_index.text_print_popup.getText());
 		assertTrue(page_index.validate_print_popup_btn.isDisplayed());
 		assertTrue(page_index.cancel_print_popup_btn.isDisplayed());
@@ -85,5 +86,10 @@ public class Test_PRO_TA_05_JRE {
 		page_index.checkbox6_print_popup.click();
 		
 		page_index.validate_print_popup_btn.click();
+		
+		TechnicalTools.takeSnapShot(driver, snap_path);
+		System.out.println(page_index.error_title_popup.getText());
+		System.out.println(page_index.error_text_popup.getText());
+		
 }
 }

@@ -106,4 +106,13 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//td[.='Annuler']")
 	WebElement cancel_print_popup_btn;
 	
+	//fin popup impression
+	
+	@FindBy (xpath="//div[@class='z-panel-header ']")
+	WebElement error_title_popup;
+	
+	@FindBy (xpath="//textarea")
+	WebElement error_text_popup;
+	
+	
 }

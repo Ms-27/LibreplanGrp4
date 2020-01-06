@@ -29,10 +29,10 @@ public class PageCritere {
 	@FindBy(xpath = "//td[contains(text(), 'Créer')]")
 	WebElement creer_btn;
 	
-	@FindBy(xpath = "//td[contains(text(), 'Enregistrer')]")
+	@FindBy(xpath = "//span[@class='save-button global-action z-button']/table")
 	WebElement enregistrer_btn;
 	
-	@FindBy(xpath = "//span[@class='save-button global-action z-button']/table")
+	@FindBy(xpath = "//span[@class='saveandcontinue-button global-action z-button']/table")
 	WebElement sauver_btn;
 	
 	@FindBy(xpath = "//span[@class='cancel-button global-action z-button']/table")

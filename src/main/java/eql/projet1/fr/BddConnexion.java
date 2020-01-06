@@ -4,8 +4,11 @@ import java.io.File;
 
 import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
+import org.dbunit.database.DatabaseConfig;
+import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.ext.db2.Db2Connection;
 import org.dbunit.operation.DatabaseOperation;
 
 public class BddConnexion {
@@ -34,5 +37,29 @@ public class BddConnexion {
 		databaseTester.setDataSet(dataset);
 		databaseTester.onSetup();
 	}
+
+	public static void deleteSpecificData(String path_to_file) throws Exception {
+		IDataSet dataset = readDataSet(path_to_file);
+		IDatabaseTester databaseTester = new JdbcDatabaseTester(DRIVER, JDBC_URL, USER, PASSWORD);
+
+		IDatabaseConnection dbConn = databaseTester.getConnection();
+		DatabaseConfig dbCfg = dbConn.getConfig();
+		dbCfg.setProperty(DatabaseConfig.FEATURE_ALLOW_EMPTY_FIELDS, Boolean.TRUE);
+
+//		System.out.println("getCfg -> " + dbConn.getConfig().getProperty(DatabaseConfig.FEATURE_ALLOW_EMPTY_FIELDS));
+//		System.out.println("dbCfg  -> " + dbCfg.getProperty(DatabaseConfig.FEATURE_ALLOW_EMPTY_FIELDS));
+
+		databaseTester.setSetUpOperation(DatabaseOperation.DELETE);
+		databaseTester.setDataSet(dataset);
+		databaseTester.onSetup();
+	}
+
+	// DefaultColumnFilter columnFilter = new DefaultColumnFilter();
+	// columnFilter.excludeColumn(column_to_exclude);
+	// FilteredTableMetaData metaData = new
+	// FilteredTableMetaData(originalTable.getTableMetaData(), columnFilter);
+
+	// DatabaseConfig config = connection.getConfig();
+	// dataset.setProperty(DatabaseConfig.FEATURE_ALLOW_EMPTY_FIELDS, Boolean.TRUE);
 
 }

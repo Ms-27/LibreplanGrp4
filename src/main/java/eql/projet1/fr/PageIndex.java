@@ -68,9 +68,42 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//td[contains(text() , 'Liste des projets')]")
 	WebElement list_project_left_menu;
 	
+	@FindBy (xpath="//img[contains(@src, 'print.png')]")
+	WebElement print_ico;
 	
+	//popup impression
 	
+	@FindBy (xpath="//div[@class='z-window-modal-header z-window-modal-header-move']")
+	WebElement name_print_popup;
 	
+	@FindBy (xpath="//legend/span")
+	WebElement legend_print_popup;
 	
+	@FindBy (xpath="//label[.='Afficher les libellés']/preceding-sibling::*")
+	WebElement checkbox1_print_popup;
+	
+	@FindBy (xpath="//label[.='Montrer les affectations de ressource']/preceding-sibling::*")
+	WebElement checkbox2_print_popup;
+	
+	@FindBy (xpath="//label[.='Etendre les groupes de tâches']/preceding-sibling::*")
+	WebElement checkbox3_print_popup;
+	
+	@FindBy (xpath="//label[contains(text(),'avancement')]/preceding-sibling::*")
+	WebElement checkbox4_print_popup;
+	
+	@FindBy (xpath="//label[.='Afficher toutes les heures rapportées']/preceding-sibling::*")
+	WebElement checkbox5_print_popup;
+	
+	@FindBy (xpath="//label[.='Afficher la barre de coût monétaire']/preceding-sibling::*")
+	WebElement checkbox6_print_popup;
+	
+	@FindBy (xpath="//span[contains(text(),'Merci')]")
+	WebElement text_print_popup;
+	
+	@FindBy (xpath="//td[.='Imprimer']")
+	WebElement validate_print_popup_btn;
+	
+	@FindBy (xpath="//td[.='Annuler']")
+	WebElement cancel_print_popup_btn;
 	
 }

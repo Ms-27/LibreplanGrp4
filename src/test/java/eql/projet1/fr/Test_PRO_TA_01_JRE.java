@@ -30,7 +30,7 @@ public class Test_PRO_TA_01_JRE {
 		}
 		
 		@Test
-		public void testCreationProjet() {
+		public void testCreationProjet() throws InterruptedException {
 			//Step1
 			driver.get("http://localhost:8090/libreplan/");
 			assertEquals("Erreur titre de la page", "LibrePlan: accès utilisateur", driver.getTitle());	
@@ -98,6 +98,39 @@ public class Test_PRO_TA_01_JRE {
 			assertEquals("Enregistrer le projet",page_projet.save_project_ico.getAttribute("title") );
 			assertEquals("Annuler l'édition",page_projet.cancel_project_ico.getAttribute("title") );
 			
+			//Step7
+			page_projet.cancel_project_ico.click();
+			assertEquals("Confirmer la fenêtre de sortie", page_projet.cancel_conf_name_popup.getText());
+			assertEquals("Les modifications non enregistrées seront perdues. Êtes-vous sûr ?", page_projet.cancel_conf_msg_popup.getText());
+			assertTrue(page_projet.cancel_conf_ok_btn_popup.isDisplayed());
+			assertTrue(page_projet.cancel_conf_cancel_btn_popup.isDisplayed());
+			
+			//Step8
+			page_projet.cancel_conf_cancel_btn_popup.click();
+			assertEquals("Détail du projet",page_projet.path_detail_project_menu.getText());
+			assertTrue(page_projet.WBS_project_tab.isDisplayed());
+			
+			//Step9
+			page_projet.cancel_project_ico.click();
+			assertEquals("Confirmer la fenêtre de sortie", page_projet.cancel_conf_name_popup.getText());
+			assertEquals("Les modifications non enregistrées seront perdues. Êtes-vous sûr ?", page_projet.cancel_conf_msg_popup.getText());
+			assertTrue(page_projet.cancel_conf_ok_btn_popup.isDisplayed());
+			assertTrue(page_projet.cancel_conf_cancel_btn_popup.isDisplayed());
+			
+			//Step10
+//			page_projet.cancel_conf_ok_btn_popup.click();
+//			assertTrue(page_projet.cancel_conf_name_popup.isDisplayed());
+//			Thread.sleep(2000);
+//			assertFalse(page_projet.cancel_conf_name_popup.isDisplayed());
+//			
+//			
+//			assertTrue(page_projet.plan_project_left_menu.isDisplayed());
+//			assertFalse(page_projet.project_tab_menu.isDisplayed());
+//			
+			
+			//Step11
+			page_projet.cancel_conf_cancel_btn_popup.click();
+			page_projet.accesProject(driver);
 			//page_index.signout_btn.click();
 		}
 	}

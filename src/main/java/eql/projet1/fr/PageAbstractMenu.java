@@ -26,6 +26,8 @@ public abstract class PageAbstractMenu {
 	@FindBy (xpath="//td[@class='migas_linea']//span[contains(. , 'Détail du projet')]")
 	WebElement path_detail_project_menu;
 	
+	
+	
 	public PageTypeHeures accessTypeHeures(WebDriver d) {
 		Actions a = new Actions (d);
 		a.moveToElement(cout_btn).build().perform();
@@ -58,5 +60,13 @@ public abstract class PageAbstractMenu {
 		a.moveToElement(TypeAvancement_btn).click().build().perform();
 		return PageFactory.initElements(driver, PageTypeAvancement.class);
 	}
-
+	
+	public PageProjet accesProject(WebDriver driver) {
+		Actions a = new Actions (driver);
+		a.moveToElement(calendrier_tab).build().perform();
+		WebElement project_btn = driver.findElement(By.xpath("//a[contains(@href, 'orders_list')]"));
+		a.moveToElement(project_btn).click().build().perform();
+		return PageFactory.initElements(driver, PageProjet.class);
+	}
+	
 }

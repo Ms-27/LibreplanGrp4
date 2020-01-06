@@ -15,27 +15,29 @@ public class Test_CRI_01_CGA {
 	WebDriver driver;
 
 	// JDD
-	String snapPath = "src/test/snapshots/debug.png";
-	String snapPath1 = "src/test/snapshots/debug1.png";
+	String sql_path = "src/test/datasets/criterion_type_create.sql";
+	
+	String snap_path = "src/test/snapshots/debug.png";
+	String snap_path1 = "src/test/snapshots/debug1.png";
+	
 	String login = "admin";
 	String password = "admin";
+	
 	String critere_name = "Critère - Test bouton [Annuler]";
 	String critere_description = "Critère - Test bouton [Annuler]";
 	String critere_name1 = "Critère - Test bouton [Enregistrer]";
 	String critere_description1 = "Critère - Test bouton [Enregistrer]";
 
-	String filePath = "src/test/snapshots/debug_participant.png";
-
 	@Before
 	public void startup() throws Exception {
 		driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		BddConnexion.setDataBase(sql_path);
 	}
 
 	@After
 	public void teardDown() throws Exception {
 		driver.quit();
-		BddConnexion.deleteSpecificData("src/test/JDD/nettoyage_criterion_type.xml");
 	}
 
 	@Test
@@ -92,9 +94,9 @@ public class Test_CRI_01_CGA {
 		assertTrue("La checkbox activé n'est pas coché", page_critere.active_checkbox.isEnabled());
 
 		TechnicalTools.fillFields(page_critere.description_field, critere_description1);
-		TechnicalTools.takeSnapShot(driver, snapPath);
+		TechnicalTools.takeSnapShot(driver, snap_path);
 		page_critere.enregistrer_btn.click();
-		TechnicalTools.takeSnapShot(driver, snapPath1);
+		TechnicalTools.takeSnapShot(driver, snap_path1);
 		assertEquals("Le tableau ne s'est pas enregistré", "Types de critères Liste", page_critere.criteres_header.getText());
 		
 

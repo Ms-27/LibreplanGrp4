@@ -36,37 +36,36 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.dbunit</groupId>
-			<artifactId>dbunit</artifactId>
-			<version>2.6.0</version>
-			<scope>test</scope>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.5</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
-		
+
 		<!-- pour le logger -->
 		<dependency>
-	     	<groupId>org.apache.logging.log4j</groupId>
-	      	<artifactId>log4j-api</artifactId>
-	      	<version>2.12.1</version>
-	    </dependency>
-	    
-	    <dependency>
-	      	<groupId>org.apache.logging.log4j</groupId>
-	      	<artifactId>log4j-core</artifactId>
-	      	<version>2.12.1</version>
-	    </dependency>
-	    
-	    <dependency>
-	      	<groupId>org.apache.logging.log4j</groupId>
-	      	<artifactId>log4j-slf4j-impl</artifactId>
-	      	<version>2.12.1</version>
-	    </dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.12.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.12.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.12.1</version>
+		</dependency>
 
 	</dependencies>
 </project>

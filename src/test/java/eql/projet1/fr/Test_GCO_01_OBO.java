@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.*;
 
 public class Test_GCO_01_OBO {
@@ -31,11 +33,18 @@ public class Test_GCO_01_OBO {
 
 	@After
 	public void tearDown() {
+		// on supprime ce qu'on vient de créer pour remettre l'application dans son état initial
+		driver.findElement(By.xpath("//img[contains(@src, 'ico_borrar')]")).click();
+		driver.findElement(By.xpath("//td[text()='OK']")).click();
+		// déconnexion
+		driver.findElement(By.xpath("//a[contains(@href, 'logout')]")).click();
+		// fermeture du navigateur
 		driver.quit();
 	}
 	
 	@Test
 	public void testGCO01() throws Exception{
+		WebDriverWait wait = new WebDriverWait(driver, 5);
 		// connexion à l'adresse de l'application
 		driver.get("http://localhost:8090/libreplan/");
 		assertEquals("Erreur titre de la page", "LibrePlan: accès utilisateur", driver.getTitle());
@@ -94,43 +103,62 @@ public class Test_GCO_01_OBO {
 		a.moveToElement(page_typeheures.ppd_field).click().build().perform();
 		page_typeheures.ppd_field.sendKeys(Keys.CONTROL + "v");
 		page_typeheures.enregistrer_btn.click();
+		Thread.sleep(300);
 		
-		// on vérifie le message d'erreur
+		// on vérifie la présence d'une flèche et d'une croix sur le message d'erreur
 		assertTrue(page_typeheures.arrow_alert.isDisplayed());
 		assertTrue(page_typeheures.cross_alert.isDisplayed());
-		/// tester couleur cadre
-		assertTrue(page_typeheures.msg_alert1.isDisplayed());
+		// on teste la couleur du cadre et le message de l'alerte
+
+		assertTrue(page_typeheures.frame_alert.getCssValue("color").equals("rgba(255, 0, 0, 1)"));
+		assertTrue(page_typeheures.msg1_alert.isDisplayed());
 		
 		// on remplit la valeur du champ prix par défaut	
 		TechnicalTools.fillFields(page_typeheures.ppd_field, "150");
 		a.moveToElement(page_typeheures.nom_field).click().build().perform();
+		// on vérfie la vlaeur du champ Prix par défaut
 		assertTrue(page_typeheures.ppd_field.getAttribute("value").equals("150 €"));
 		
 		// on décoche la checkbox Code et on supprime la valeur du champ code
 		page_typeheures.code_chckbx.click();
 		a.moveToElement(page_typeheures.code_field).click().build().perform();
 		page_typeheures.code_field.clear();
-		Thread.sleep(300);
 		assertTrue(page_typeheures.code_field.getAttribute("value").isEmpty());
 		
+		// on vérifie la présence d'une flèch et d'une croix sur le message d'erreur
 		assertTrue(page_typeheures.arrow_alert.isDisplayed());
 		assertTrue(page_typeheures.cross_alert.isDisplayed());
-		/// tester couleur cadre
-		assertTrue(page_typeheures.msg_alert2.isDisplayed());
+		// on teste la couleur du cadre et le message de l'alerte
+		assertTrue(page_typeheures.frame_alert.getCssValue("color").equals("rgba(255, 0, 0, 1)"));
+		assertTrue(page_typeheures.msg2_alert.isDisplayed());
 		
+		// on renseigne une valeur pour le champ Code
 		TechnicalTools.fillFields(page_typeheures.code_field, "code-de-test");
+		// on clique sur le bouton enregistrer
 		page_typeheures.enregistrer_btn.click();
-		Thread.sleep(300);
 		
+		System.out.println(page_typeheures.typeheures_title.getAttribute("value"));
+		//assertTrue(page_typeheures.typeheures_title.getText().contains("heures Liste"));
+		//assertTrue(page_typeheures.frame_alert.getCssValue("color").equals("rgba(255, 0, 0, 1)"));
+		//System.out.println(page_typeheures.msg3_alert.getAttribute("color"));
+		//assertTrue(page_typeheures.msg3_alert.getText().contains("Type d'heures \"Prix1\" enregistré"));
 		
+		System.out.println(page_typeheures.msg3_alert.getText());
 		
-		// on supprime ce qu'on vient de créer pour remettre l'application dans son état initial
-		driver.findElement(By.xpath("//img[contains(@src, 'ico_borrar')]")).click();
-		//Thread.sleep(1000);
-		driver.findElement(By.xpath("//td[text()='OK']")).click();
-		//Thread.sleep(2000);
+		page_typeheures.price_by_name_link.click();
 		
-		// déconnexion
-		page_index.signout_btn.click();
+		page_typeheures.annuler_btn.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(page_typeheures.code_by_name_link));
+		page_typeheures.code_by_name_link.click();
+		
+		page_typeheures.active_chckbx.click();
+		page_typeheures.enregistrer_btn.click();
+		Thread.sleep(500);
+		
+		// on vérifie la couleur du cadre du message d'erreur et le message affiché dedans
+		//assertTrue("Message d'alerte non affiché", page_typeheures.msg4_alert.isDisplayed());
+		//assertTrue(page_typeheures.frame_alert.getCssValue("color").equals("rgba(204, 80, 19, 1)"));
+		
 	}
 }

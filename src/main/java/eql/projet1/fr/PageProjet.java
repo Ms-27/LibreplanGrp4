@@ -114,4 +114,14 @@ public class PageProjet extends PageAbstractMenu {
 	@FindBy (xpath="//img[contains(@src , 'derived1.png')]")
 	WebElement project_model_ico;
 	
+	@FindBy (xpath="//div[@class='z-window-embedded']//tr[@valign='middle']//input[@class='z-textbox']")
+	WebElement new_task_name_input;
+	
+	@FindBy (xpath="//div[@class='z-window-embedded']//tr[@valign='middle']//input[@class='z-intbox']")
+	WebElement new_task_hour_input;
+	
+	@FindBy (xpath="//div[@class=\"orderelements-tab z-tabpanel\"]//td[.='Ajouter']")
+	WebElement new_task_validate_btn;
+	
+	
 }

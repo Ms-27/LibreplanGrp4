@@ -10,9 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-
-
-public class Test_PRO_TA_02_JRE {
+public class Test_PRO_TA_05_JRE {
 
 	WebDriver driver;
 	String login = "admin";
@@ -32,7 +30,7 @@ public class Test_PRO_TA_02_JRE {
 	}
 
 	@Test
-	public void testCreationTache() throws InterruptedException {
+	public void testCreationProjet() throws InterruptedException {
 		//Step1
 		driver.get("http://localhost:8090/libreplan/");
 		assertEquals("Erreur titre de la page", "LibrePlan: accès utilisateur", driver.getTitle());	
@@ -43,21 +41,6 @@ public class Test_PRO_TA_02_JRE {
 
 		//Step2
 		page_index.list_project_left_menu.click();
-		PageProjet page_projet = PageFactory.initElements(driver, PageProjet.class);
-		assertTrue(page_projet.first_project.isDisplayed());
-		
-		//Step3
-		page_projet.project_name.click();
-		assertTrue(page_projet.WBS_project_tab.isDisplayed());
-		
-		//Step4
-		assertEquals("Détail du projet",page_projet.path_detail_project_menu.getText());
-		assertEquals(project_name,page_projet.path_name_project_menu.getText());
-		
-		//Step5
-		TechnicalTools.fillFields(page_projet.new_task_name_input, "Tache1-P1");
-		TechnicalTools.fillFields(page_projet.new_task_hour_input, "5");
-		page_projet.new_task_validate_btn.click();
-		
-	}
+
+}
 }

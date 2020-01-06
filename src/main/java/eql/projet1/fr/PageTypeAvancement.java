@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PageTypeAvancement {
 
-	@FindBy (xpath="//div[contains(text(), 'avancement')]")
+
+	
+	@FindBy (xpath="//div[contains(text(), 'avancement Liste')]")
 	WebElement avancement_header;
 	
 	@FindBy (xpath="//div[contains(text(), 'Nom')]")
@@ -28,7 +30,7 @@ public class PageTypeAvancement {
 	@FindBy(xpath = "//div[contains(text(), 'Nom d'unité')]")
 	WebElement nom_unite_th;
 	
-	@FindBy(xpath ="//span[contains(text(), 'Actif')] " )
+	@FindBy(xpath ="//div[2]/div/div/div/div[3]/table/tbody[2]/tr[2]/td[2]/div/span/input" )
 	WebElement actif_checkbox;
 	
 	@FindBy(xpath ="//span[contains(text(), 'Valeur maximum par défaut')]")
@@ -36,7 +38,6 @@ public class PageTypeAvancement {
 	
 	@FindBy(xpath ="//span[contains(text(), 'Précision')] ")
 	WebElement precision_th;
-	
 	
 	@FindBy(xpath ="//div[contains(text(), 'Type')]")
 	WebElement type_th;
@@ -69,8 +70,16 @@ public class PageTypeAvancement {
 	WebElement user_input;
 	
 	@FindBy(xpath = "//tr[6]/td[2]/div/span/input")
-	WebElement pourcentage_checkbox;
+	WebElement pourcentage_checkbox;	
 	
+	@FindBy(xpath = "//td/table/tbody/tr/td/div/span")
+	WebElement enregister_msg;
+
+	@FindBy(xpath = "//tr[6]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_borrar1.png']")
+	WebElement supprimer_icon;
+	
+	@FindBy(xpath = "//tr[6]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_editar1.png']")
+	WebElement modifier_icon;
 
 	
 	public PageTypeAvancement addTypeAvancement(WebDriver d, String nom, String val_max) {

@@ -2,6 +2,8 @@ package eql.projet1.fr;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -15,6 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Test_AVA_01_SBA {
 
 	WebDriver driver;
+	String sql_path = "src/test/datasets/advance_type_create.sql";
+	
 	String login = "admin";
 	String pswd = "admin";
 	String val_max = "100,00";
@@ -28,14 +32,15 @@ public class Test_AVA_01_SBA {
 
 
 	@Before
-	public void startup() {
+	public void startup() throws ClassNotFoundException, FileNotFoundException, SQLException {
 		driver = TechnicalTools.setBrowser(EBrowser.chrome);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		BddConnexion.setDataBase(sql_path);
 	}
 
 	@After
 	public void teardDown() {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test

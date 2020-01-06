@@ -3,11 +3,10 @@ package eql.projet1.fr;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 
 public class PageTypeHeures extends PageAbstractMenu {
+	// famille de titre de colonne du tableau
 	@FindBy (xpath="//div[contains(text(), 'Code')]")
 	WebElement code_th;
 	
@@ -23,11 +22,16 @@ public class PageTypeHeures extends PageAbstractMenu {
 	@FindBy (xpath="//div[contains(text(), 'Actions')]")
 	WebElement actions_th;
 	
+	// bouton Créer
 	@FindBy (xpath="//td[contains(text(), 'Créer')]")
 	WebElement creer_btn;
 	
+	// Titres de la apge
 	@FindBy (xpath="//td[contains(text(), \"Créer Type d'heures\")]")
 	WebElement creer_title;
+	
+	@FindBy (xpath="//div[contains(text(), 'Types')]")
+	WebElement typeheures_title;
 	
 	@FindBy (xpath="//span[contains(text(), \"Données du type d'heure de travail\")]")
 	WebElement donneestypeheure_tab;
@@ -71,6 +75,10 @@ public class PageTypeHeures extends PageAbstractMenu {
 	@FindBy (xpath="//td[contains(text(), 'Annuler')]")
 	WebElement annuler_btn;
 	
+	// élément des messages d'alerte
+	@FindBy (xpath="//div[@class='z-errbox z-popup']")
+	WebElement frame_alert;
+	
 	@FindBy (xpath="//div[contains(@class, 'z-arrow')]")
 	WebElement arrow_alert;
 	
@@ -78,15 +86,21 @@ public class PageTypeHeures extends PageAbstractMenu {
 	WebElement cross_alert;
 	
 	@FindBy (xpath="//div[contains(text(), 'Vous devez spécifier un nombre au lieu de Prix 1.')]")
-	WebElement msg_alert1;
+	WebElement msg1_alert;
 	
 	@FindBy (xpath="//div[contains(text(), 'ne peut pas être vide')]")
-	WebElement msg_alert2;
+	WebElement msg2_alert;
 	
-	// 
-	@FindBy (xpath="//img[contains(@src, 'ico_borrar')]")
-    WebElement img_trash;
+	@FindBy (xpath="//img[contains(@src, 'ico_ok.png')]/following-sibling::span")
+	WebElement msg3_alert;
 	
-	@FindBy (xpath="//td[text()='OK']")
-	WebElement Ok_del_btn;
+	@FindBy (xpath="//div[contains(text(), 'le type d'heures de travail pour les feuilles de temps personnelles ne peut pas être désactivé')]")
+	WebElement msg4_alert;
+	
+	// sélection d'un lien par le nom du type d'heure
+	@FindBy (xpath="//span[.='Prix 1']/../../following-sibling::td/div")
+	WebElement price_by_name_link;
+	
+	@FindBy (xpath="//span[.='Prix 1']/../../preceding-sibling::td/div")
+	WebElement code_by_name_link;
 }

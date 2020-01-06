@@ -72,6 +72,9 @@ public class PageTypeAvancement {
 	@FindBy(xpath = "//tr[6]/td[2]/div/span/input")
 	WebElement pourcentage_checkbox;	
 	
+	@FindBy(xpath = "//div[2]/div/div/div/div[3]/table/tbody[2]/tr[6]/td[2]/div/span/input")
+	WebElement pourcentage_checkbox2;
+	
 	@FindBy(xpath = "//td/table/tbody/tr/td/div/span")
 	WebElement enregister_msg;
 
@@ -80,6 +83,12 @@ public class PageTypeAvancement {
 	
 	@FindBy(xpath = "//tr[6]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_editar1.png']")
 	WebElement modifier_icon;
+	
+	@FindBy(xpath ="//td[contains(text(), 'Créer Type')]")
+	WebElement creer_type_header;
+	
+	@FindBy(xpath = "//td[contains(text(), 'Modifier Type')]")
+	WebElement modifier_type_header;
 
 	
 	public PageTypeAvancement addTypeAvancement(WebDriver d, String nom, String val_max) {
@@ -89,6 +98,13 @@ public class PageTypeAvancement {
 		enregistrer_btn.click();
 		
 		return PageFactory.initElements(d, PageTypeAvancement.class);
+	}
+	
+	public void addAvancementSansPour(WebDriver d, String nom)
+	{
+		TechnicalTools.fillFields(nom_unite_input, nom);
+		pourcentage_checkbox2.click();
+			
 	}
 
 }

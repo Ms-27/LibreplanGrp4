@@ -101,4 +101,17 @@ public class PageProjet extends PageAbstractMenu {
 	
 	@FindBy (xpath="//tr[@class='clickable-rows projects-list z-row']/td[8]//span")
 	WebElement project_state;
+	
+	@FindBy (xpath="//img[contains(@src , 'editar1.png')]")
+	WebElement project_edit_ico;
+	
+	@FindBy (xpath="//img[contains(@src , 'borrar1.png')]")
+	WebElement project_supp_ico;
+	
+	@FindBy (xpath="//img[contains(@src , 'planificador1.png')]")
+	WebElement project_plan_ico;
+	
+	@FindBy (xpath="//img[contains(@src , 'derived1.png')]")
+	WebElement project_model_ico;
+	
 }

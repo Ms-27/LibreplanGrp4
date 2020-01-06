@@ -13,10 +13,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.*;
 
 public class Test_GCO_01_OBO {
 
 	WebDriver driver;
+	static Logger logger = LoggerFactory.getLogger(Test_GCO_01_OBO.class);
+	//JDD
 	String login = "admin";
 	String pswd = "admin";
 	

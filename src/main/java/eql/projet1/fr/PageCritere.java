@@ -8,6 +8,9 @@ public class PageCritere {
 	@FindBy(xpath = "//div[contains(text(), 'critère')]")
 	WebElement criteres_header;
 	
+	@FindBy(xpath = "//td[contains(text(), 'Modifier Type de critère')]")
+	WebElement criteres_modifier_header;
+	
 	@FindBy(xpath = "//span[contains(text(), 'Modifier')]")
 	WebElement modifier_tab;
 
@@ -63,6 +66,15 @@ public class PageCritere {
 	WebElement description_field;
 	
 	@FindBy(xpath = "//div[contains(@class, 'z-row')]/span[contains(text(), 'Test bouton')]")
-	WebElement critère_test_table;
+	WebElement critere_test_table;
+	
+	@FindBy(xpath = "//span[contains(text(), '[Sauver et continuer]')]")
+	WebElement critere_message_sauver_continuer;
+	
+	@FindBy(xpath = "//tr[3]/td[5]//img[contains(@src, 'editar1')]")
+	WebElement critere_modifier_sauver_continuer_btn;
+	
+	@FindBy(xpath = "//span[@title='Critère - Test bouton [Sauver et continuer]']")
+	WebElement sauver_continuer_table_name;
 
 }

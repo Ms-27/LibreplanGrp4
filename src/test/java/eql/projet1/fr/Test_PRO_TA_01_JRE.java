@@ -70,29 +70,33 @@ public class Test_PRO_TA_01_JRE {
 			
 			page_index.new_project_save_btn.click();
 			
-			assertEquals("Détail du projet",page_index.path_detail_project_menu.getText());
+			PageProjet page_projet = PageFactory.initElements(driver, PageProjet.class);
+			 
+			
+			assertEquals("Détail du projet",page_projet.path_detail_project_menu.getText());
 			
 			
 			//Step4
-			assertTrue(page_index.plan_project_left_menu.isDisplayed());
-			assertTrue(page_index.detail_project_left_menu.isDisplayed());
-			assertTrue(page_index.resources_project_left_menu.isDisplayed());
-			assertTrue(page_index.allowances_project_left_menu.isDisplayed());
-			assertTrue(page_index.board_project_left_menu.isDisplayed());
+			assertTrue(page_projet.plan_project_left_menu.isDisplayed());
+			assertTrue(page_projet.detail_project_left_menu.isDisplayed());
+			assertTrue(page_projet.resources_project_left_menu.isDisplayed());
+			assertTrue(page_projet.allowances_project_left_menu.isDisplayed());
+			assertTrue(page_projet.board_project_left_menu.isDisplayed());
 			
 			//Step5
-			assertTrue(page_index.WBS_project_tab.isDisplayed());
-			assertTrue(page_index.data_project_tab.isDisplayed());
-			assertTrue(page_index.cost_project_tab.isDisplayed());
-			assertTrue(page_index.advancement_project_tab.isDisplayed());
-			assertTrue(page_index.wording_project_tab.isDisplayed());
-			assertTrue(page_index.requirement_project_tab.isDisplayed());
-			assertTrue(page_index.material_project_tab.isDisplayed());
-			assertTrue(page_index.task_project_tab.isDisplayed());
-			assertTrue(page_index.auth_project_tab.isEnabled());
+			assertTrue(page_projet.WBS_project_tab.isDisplayed());
+			assertTrue(page_projet.data_project_tab.isDisplayed());
+			assertTrue(page_projet.cost_project_tab.isDisplayed());
+			assertTrue(page_projet.advancement_project_tab.isDisplayed());
+			assertTrue(page_projet.wording_project_tab.isDisplayed());
+			assertTrue(page_projet.requirement_project_tab.isDisplayed());
+			assertTrue(page_projet.material_project_tab.isDisplayed());
+			assertTrue(page_projet.task_project_tab.isDisplayed());
+			assertTrue(page_projet.auth_project_tab.isEnabled());
 			
 			//Step6
-			System.out.println(page_index.save_project_ico.getAttribute("alt"));
+			assertEquals("Enregistrer le projet",page_projet.save_project_ico.getAttribute("title") );
+			assertEquals("Annuler l'édition",page_projet.cancel_project_ico.getAttribute("title") );
 			
 			//page_index.signout_btn.click();
 		}

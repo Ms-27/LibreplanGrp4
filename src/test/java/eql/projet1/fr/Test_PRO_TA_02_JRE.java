@@ -22,7 +22,7 @@ public class Test_PRO_TA_02_JRE {
 
 	@Before
 	public void setUp() {
-		driver = TechnicalTools.setBrowser(EBrowser.chrome);
+		driver = TechnicalTools.setBrowser(EBrowser.firefox);
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	}
 
@@ -42,22 +42,59 @@ public class Test_PRO_TA_02_JRE {
 		assertTrue(page_index.user_txt.getText().contains("admin"));
 
 		//Step2
-		page_index.list_project_left_menu.click();
+		page_index.accesProject(driver);
 		PageProjet page_projet = PageFactory.initElements(driver, PageProjet.class);
 		assertTrue(page_projet.first_project.isDisplayed());
-		
+
 		//Step3
 		page_projet.project_name.click();
 		assertTrue(page_projet.WBS_project_tab.isDisplayed());
-		
+
 		//Step4
 		assertEquals("Détail du projet",page_projet.path_detail_project_menu.getText());
 		assertEquals(project_name,page_projet.path_name_project_menu.getText());
-		
+
 		//Step5
 		TechnicalTools.fillFields(page_projet.new_task_name_input, "Tache1-P1");
 		TechnicalTools.fillFields(page_projet.new_task_hour_input, "5");
 		page_projet.new_task_validate_btn.click();
+
+		//Step6
+		TechnicalTools.fillFields(page_projet.new_task_name_input, "Tache2-P1");
+		TechnicalTools.fillFields(page_projet.new_task_hour_input, "10");
+		page_projet.new_task_validate_btn.click();
+
+		//Step7
+		TechnicalTools.fillFields(page_projet.new_task_name_input, "Tache3-P1");
+		TechnicalTools.fillFields(page_projet.new_task_hour_input, "20");
+		page_projet.new_task_validate_btn.click();
+
+		//Step8
+
+		TechnicalTools.fillFields(page_projet.new_task_name_input, "Tache4-P1");
+		TechnicalTools.fillFields(page_projet.new_task_hour_input, "8");
+		page_projet.new_task_validate_btn.click();
+
+		//Step9
+		page_projet.first_task.click();
+		page_projet.down_btn.click();
+
+		//Step9
+		page_projet.third_task.click();
+		page_projet.up_btn.click();
 		
+		page_projet.first_task_code_input.sendKeys("T1");
+		page_projet.second_task_code_input.sendKeys("T2");
+		page_projet.third_task_code_input.sendKeys("T3");
+		page_projet.four_task_code_input.sendKeys("T4");
+		
+		page_projet.first_task_date_input.sendKeys("05/01/2020");
+		page_projet.second_task_date_input.sendKeys("08/01/2020");
+		
+		page_projet.third_task_date_input.sendKeys("03/01/2020");
+		page_projet.four_task_date_input.sendKeys("05/01/2020");
+		
+		page_projet.save_btn.click();
+		page_projet.cancel_conf_ok_btn_popup.click();
 	}
 }

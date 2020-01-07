@@ -114,14 +114,57 @@ public class PageProjet extends PageAbstractMenu {
 	@FindBy (xpath="//img[contains(@src , 'derived1.png')]")
 	WebElement project_model_ico;
 	
-	@FindBy (xpath="//div[@class='z-window-embedded']//tr[@valign='middle']//input[@class='z-textbox']")
+	@FindBy (xpath="//span[.='Nouvelle tâche']//ancestor::tr[1]/td[5]/input")
 	WebElement new_task_name_input;
 	
-	@FindBy (xpath="//div[@class='z-window-embedded']//tr[@valign='middle']//input[@class='z-intbox']")
+	@FindBy (xpath="//span[.='Nouvelle tâche']//ancestor::tr[1]/td[9]/input")
 	WebElement new_task_hour_input;
 	
 	@FindBy (xpath="//div[@class=\"orderelements-tab z-tabpanel\"]//td[.='Ajouter']")
 	WebElement new_task_validate_btn;
 	
+	@FindBy (xpath="//tr[contains(@title,'Tache1-P1')]//span")
+	WebElement first_task;
 	
+	@FindBy (xpath="//tr[contains(@title,'Tache2-P1')]//span")
+	WebElement second_task;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache3-P1')]//span")
+	WebElement third_task;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache4-P1')]//span")
+	WebElement four_task;
+	
+	@FindBy (xpath="//img[contains(@src,'ico_bajar1.png')]")
+	WebElement down_btn;
+	
+	@FindBy (xpath="//img[contains(@src,'ico_subir1.png')]")
+	WebElement up_btn;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache1-P1')]/td[2]//input")
+	WebElement first_task_code_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache2-P1')]/td[2]//input")
+	WebElement second_task_code_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache3-P1')]/td[2]//input")
+	WebElement third_task_code_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache4-P1')]/td[2]//input")
+	WebElement four_task_code_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache1-P1')]/td[6]//input")
+	WebElement first_task_date_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache2-P1')]/td[6]//input")
+	WebElement second_task_date_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache3-P1')]/td[7]//input")
+	WebElement third_task_date_input;
+	
+	@FindBy (xpath="//tr[contains(@title,'Tache4-P1')]/td[7]//input")
+	WebElement four_task_date_input;
+	
+	@FindBy (xpath="//img[contains(@src,'ico_save.png')]")
+	WebElement save_btn;
 }

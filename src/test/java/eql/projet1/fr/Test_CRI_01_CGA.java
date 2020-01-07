@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -134,13 +135,32 @@ public class Test_CRI_01_CGA {
 		
 		// Step 9 : Modifier un critère - accès formulaire de modification - Colonne "Opération" :
 		page_critere.critere_modifier_sauver_continuer_btn.click();
-		assertEquals("Le critère n'est pas en modification", "Modifier Type de critère: Critère - Test bouton [Sauver et continuer]", page_critere.criteres_modifier_header.getText());
+		//assertEquals("Le critère n'est pas en modification", "Modifier Type de critère: Critère - Test bouton [Sauver et continuer]", page_critere.criteres_modifier_header.getText());
 		
 		// Step 10 : Modifier un critère -  Bouton [Annuler] :
 		TechnicalTools.fillFields(page_critere.nom_input, critere_name_sauver2);
 		page_critere.annuler_btn.click();
-		assertEquals("Le tableau ne s'est pas annulé", "Types de critères Liste", page_critere.criteres_header.getText());
-		assertEquals("L'élément ne s'est pas annulé", "Critère - Test bouton [Sauver et continuer]", page_critere.sauver_continuer_table_name.getText());
+		//assertEquals("Le tableau ne s'est pas annulé", "Types de critères Liste", page_critere.criteres_header.getText());
+		//assertEquals("L'élément ne s'est pas annulé", "Critère - Test bouton [Sauver et continuer]", page_critere.sauver_continuer_table_name.getText());
+		
+		// Step 11 : Modifier un critère - accès formulaire de modification - Colonne "Nom" :
+		driver.navigate().refresh();
+		page_critere.sauver_continuer_table_name.click();
+		assertEquals("Le tableau ne s'est pas chargé", "Modifier Type de critère: Critère - Test bouton [Sauver et continuer]", page_critere.modification_sauver_continuer_title.getText());
+		
+		// Step 12 : Modifier un critère - modification du nom :
+		TechnicalTools.fillFields(page_critere.nom_input, critere_name_sauver2);
+		//assertEquals("Le tableau ne s'est pas chargé", "Modifier Type de critère: Critère - Test bouton [Sauver et continuer] 2", page_critere.modification_sauver_continuer_title.getText());
+		
+		// Step 13 : Modifier un critère - bouton [Sauver et continuer] :
+		page_critere.sauver_btn.click();
+		assertEquals("L'élément ne s'est pas modifier correctement", "Type de critère \"Critère - Test bouton [Sauver et continuer] 2\" enregistré", page_critere.sauver_continuer_message.getText());
+	
+		// Step 14 : Retour page d'administration des critères :
+		page_critere.annuler_btn.click();
+		assertEquals("L'élément ne s'est pas modifier correctement", "Critère - Test bouton [Sauver et continuer] 2", page_critere.sauver_continuer2_table_name.getText());
+		
+		
 	}
 
 }

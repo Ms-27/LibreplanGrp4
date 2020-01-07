@@ -14,9 +14,6 @@ public class PageIndex extends PageAbstractMenu {
 
 	//popup project
 	
-	@FindBy (xpath="//div[contains(@id,'Qh7-cave')]")
-	WebElement new_project_popup;
-	
 	@FindBy (xpath="//div[contains(@class,'z-window-modal-header')]")
 	WebElement name_popup;
 	

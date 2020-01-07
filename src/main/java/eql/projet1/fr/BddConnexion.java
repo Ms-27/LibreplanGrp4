@@ -18,10 +18,20 @@ public class BddConnexion {
 	private static final String PASSWORD = "libreplan";
 	
 	public static void setDataBase(String sql_path) throws ClassNotFoundException, SQLException, FileNotFoundException {
+		
+		// Load, in my case, postgreSQL jdbc driver
 		Class.forName(DRIVER);
+		
+		// Create Connection to database
 		Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
+		
+		// Initialize the script runner
 		ScriptRunner sr = new ScriptRunner(connection);
+		
+		// Creating a reader object
 		Reader reader = new BufferedReader(new FileReader(sql_path));
+		
+		// Running the script
 		sr.runScript(reader);
 	}
 

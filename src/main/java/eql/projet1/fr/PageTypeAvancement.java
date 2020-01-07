@@ -9,19 +9,19 @@ public class PageTypeAvancement {
 
 
 	
-	@FindBy (xpath="//div[contains(text(), 'avancement Liste')]")
+	@FindBy (xpath = "//div[contains(text(), 'avancement Liste')]")
 	WebElement avancement_header;
 	
-	@FindBy (xpath="//div[contains(text(), 'Nom')]")
+	@FindBy (xpath = "//div[contains(text(), 'Nom')]")
 	WebElement nom_th;
 	
-	@FindBy (xpath="//div[contains(text(), 'Activé')]")
+	@FindBy (xpath = "//div[contains(text(), 'Activé')]")
 	WebElement act_th;
 	
-	@FindBy (xpath="//div[contains(text(), 'Prédéfini')]")
+	@FindBy (xpath = "//div[contains(text(), 'Prédéfini')]")
 	WebElement pred_th;
 	
-	@FindBy (xpath="//div[contains(text(), 'Opérations')]")
+	@FindBy (xpath = "//div[contains(text(), 'Opérations')]")
 	WebElement op_th;
 
 	@FindBy(xpath = "//span[contains(text(), 'Modifier')]")
@@ -33,6 +33,15 @@ public class PageTypeAvancement {
 	@FindBy(xpath ="//div[2]/div/div/div/div[3]/table/tbody[2]/tr[2]/td[2]/div/span/input" )
 	WebElement actif_checkbox;
 	
+	@FindBy (xpath = "//div[3]/div/div[3]/table/tbody[2]/tr[6]/td[2]/div/span/input")
+	WebElement actif_checkbox2;
+	
+	@FindBy (xpath = "//tr[6]/td[3]/div/span/input") 
+	WebElement predefini_checkbox;
+	
+	@FindBy (xpath = "//tr[6]/td[3]/div/span/input")
+	WebElement predefini_checkbox2;
+		
 	@FindBy(xpath ="//span[contains(text(), 'Valeur maximum par défaut')]")
 	WebElement val_max_def_th;
 	
@@ -81,8 +90,14 @@ public class PageTypeAvancement {
 	@FindBy(xpath = "//tr[6]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_borrar1.png']")
 	WebElement supprimer_icon;
 	
+	@FindBy (xpath = "//tr[7]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_borrar1.png']")
+	WebElement supprimer_icon2;
+	
 	@FindBy(xpath = "//tr[6]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_editar1.png']")
 	WebElement modifier_icon;
+	
+	@FindBy (xpath = "//tr[7]//tr[2]/td[2]/img[@src='/libreplan/common/img/ico_editar1.png']")
+	WebElement modifier_icon2;
 	
 	@FindBy(xpath ="//td[contains(text(), 'Créer Type')]")
 	WebElement creer_type_header;

@@ -23,7 +23,7 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//div[contains(@id,'-cell')]/input")
 	WebElement new_project_name_input;
 	
-	@FindBy (xpath="//input[contains(@style,'381px')]")
+	@FindBy (xpath="//div[.='Modèle']//ancestor::tr/td[2]/div[@class='z-row-cnt z-overflow-hidden']")
 	WebElement new_project_model_input;
 	
 	@FindBy (xpath="//table[@class='z-hbox']//input[contains(@class,'z-textbox')]")
@@ -38,7 +38,7 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//tr[@class='z-row']//input[@class='z-datebox-inp']")
 	WebElement new_project_deadline_input;
 	
-	@FindBy (xpath="//tr[@class='z-row z-grid-odd']//input[@style='width: 466px;']")
+	@FindBy (xpath="//div[.='Client']//ancestor::tr/td[2]/div[@class='z-row-cnt z-overflow-hidden']")
 	WebElement new_project_client_input;
 	
 	@FindBy (xpath="//tr[@class='z-row']//input[@class='z-combobox-inp']")

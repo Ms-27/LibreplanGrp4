@@ -21,7 +21,7 @@ public class Test_PRO_TA_01_JRE {
 
 	@Before
 	public void setUp() {
-		driver = TechnicalTools.setBrowser(EBrowser.chrome);
+		driver = TechnicalTools.setBrowser(EBrowser.firefox);
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	}
 

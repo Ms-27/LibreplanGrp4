@@ -31,7 +31,9 @@ public class Test_AVA_01_SBA {
 	String msg_enregistrement1 = "Type d'avancement \"Type avancement - Test 1\" enregistré";
 	String msg_enregistrement2 = "Type d'avancement \"Type avancement - Test 2\" enregistré";
 	String titre_page_test2 = "Modifier Type d'avancement: Type avancement - Test 2";
-	
+	String nom_test1 = "Type d'avancement \"Type avancement - Test 1\" enregistré";
+	String nom_test2 = "Type d'avancement \"Type avancement - Test 2\" enregistré";
+
 
 
 	@Before
@@ -105,11 +107,13 @@ public class Test_AVA_01_SBA {
 		wait.until(ExpectedConditions.visibilityOf(page_typeavancement.enregister_msg));
 		assertEquals("Message d'enregistrement non affiché",msg_enregistrement1,page_typeavancement.enregister_msg.getText());
 
+		assertEquals("Le nom du Test 1 est incorrect",nom_test1,page_typeavancement.nom_avancement1_tr.getText());
+
 		assertFalse("La case Activité du Test 1 est cochée",page_typeavancement.actif_checkbox.isSelected());
-		assertFalse("La case Activité du Test 1 peut être sélectionnée",page_typeavancement.actif_checkbox.isDisplayed());
+		assertFalse("La case Activité du Test 1 est modifiable ",page_typeavancement.actif_checkbox.isDisplayed());
 
 		assertFalse("La case prédéfini du Test 1 est cochée",page_typeavancement.predefini_checkbox.isSelected());
-		
+
 		assertTrue("L'icone supprimer n'est pas visible",page_typeavancement.supprimer_icon.isDisplayed());
 		assertTrue("L'icone modifier n'est pas visible",page_typeavancement.modifier_icon.isDisplayed());
 
@@ -136,21 +140,22 @@ public class Test_AVA_01_SBA {
 		wait.until(ExpectedConditions.visibilityOf(page_typeavancement.enregister_msg));
 		page_typeavancement.annuler_btn.click();
 
-		//assertTrue("Erreur titre de la page",page_typeavancement.avancement_header.getText().contains("avancement Liste"));
+		wait.until(ExpectedConditions.visibilityOf(page_typeavancement.avancement_header));
+		assertTrue("Erreur titre de la page",page_typeavancement.avancement_header.getText().contains("avancement Liste"));
 
-		
 		// Step 9 : Conformité du type d'avancement ajouté 
-		
-		assertFalse("La case Activité du Test 2  peut être sélectionnée",page_typeavancement.actif_checkbox2.isDisplayed());
-		
-		//assertTrue("La case Activité du Test 2 n'est pas cochée ",page_typeavancement.actif_checkbox2.isSelected());
-		
+
+		assertEquals("Le nom du Test 2 est incorrect",nom_test2,page_typeavancement.nom_avancement2_tr.getText());
+
+		assertTrue("La case Activité du Test 2 n'est pas cochée ",page_typeavancement.actif_checkbox2.isSelected());
+		assertFalse("La case Activité du Test 2  est modifiable",page_typeavancement.actif_checkbox2.isEnabled());
 
 		assertFalse("La case prédéfini du Test 2 est cochée",page_typeavancement.predefini_checkbox2.isSelected());
-		
+		assertFalse("La case Activité du Test 2  est modifiable",page_typeavancement.predefini_checkbox2.isEnabled());
+
 		assertTrue("L'icone supprimer n'est pas visible",page_typeavancement.supprimer_icon2.isDisplayed());
 		assertTrue("L'icone modifier n'est pas visible",page_typeavancement.modifier_icon2.isDisplayed());
-		
+
 	}
 
 

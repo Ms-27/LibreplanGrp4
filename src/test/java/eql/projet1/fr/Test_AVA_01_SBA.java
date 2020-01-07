@@ -18,7 +18,7 @@ public class Test_AVA_01_SBA {
 
 	WebDriver driver;
 	String sql_path = "src/test/datasets/advance_type_create.sql";
-	
+
 	String login = "admin";
 	String pswd = "admin";
 	String val_max = "100,00";
@@ -28,7 +28,10 @@ public class Test_AVA_01_SBA {
 	String nom_unite2 = "Type avancement - Test 2";
 	String val_max_defaut = "10,00";
 
-	String msg_enregistrement2 = "Type d'avancement \"Type d'avancement - Test 2\" enregistré";
+	String msg_enregistrement1 = "Type d'avancement \"Type avancement - Test 1\" enregistré";
+	String msg_enregistrement2 = "Type d'avancement \"Type avancement - Test 2\" enregistré";
+	String titre_page_test2 = "Modifier Type d'avancement: Type avancement - Test 2";
+	
 
 
 	@Before
@@ -48,33 +51,30 @@ public class Test_AVA_01_SBA {
 
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 
-		// connexion à l'adresse de l'application
+		// Step 1 : connexion à l'adresse de l'application
 
 		driver.get("http://localhost:8090/libreplan/");
 		assertEquals("Erreur titre de la page", "LibrePlan: accès utilisateur", driver.getTitle());
 
-		// connexion
+		// Accès à la page Index
 
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		PageIndex page_index = page_login.connect(driver, login, pswd);
 		assertEquals("Erreur Ressources non présent", "Ressources ", page_index.ressources_btn.getText());
 
-		// accès à la page Type d'Avancement
+		// Step 2 : accès à la page de gestion des Types d'Avancement
 
 		PageTypeAvancement page_typeavancement = page_index.accesTypeAvancement(driver);
 		assertEquals("Le Type d'avancement ne s'est pas chargé", "Types d'avancement Liste", page_typeavancement.avancement_header.getText());
 
-		assertTrue(page_typeavancement.nom_th.isDisplayed());
-		assertTrue(page_typeavancement.act_th.isDisplayed());
-		assertTrue(page_typeavancement.pred_th.isDisplayed());
-		assertTrue(page_typeavancement.op_th.isDisplayed());
-		assertTrue(page_typeavancement.creer_btn.isDisplayed());
-
-		assertTrue("Le bouton Créer n'est pas présent", page_typeavancement.creer_btn.isEnabled());
+		assertTrue("La colonne Nom n'est pas présente",page_typeavancement.nom_th.isEnabled());
+		assertTrue("La colonne Activité n'est pas présente",page_typeavancement.act_th.isEnabled());
+		assertTrue("La colonne Prédéfini n'est pas présente",page_typeavancement.pred_th.isEnabled());
+		assertTrue("La colonne Opérations n'est pas présente",page_typeavancement.op_th.isEnabled());
+		assertTrue("Le bouton Créer n'est pas présent",page_typeavancement.creer_btn.isEnabled());
 
 
-
-		// création d'un type d'avancement
+		// Step 3 : création d'un type d'avancement
 
 		page_typeavancement.creer_btn.click();
 
@@ -95,7 +95,7 @@ public class Test_AVA_01_SBA {
 		assertTrue("Le bouton Annuler n'est pas présent", page_typeavancement.annuler_btn.isEnabled());
 
 
-		// création d'un type d'avancement - sans pourcentage 
+		// Step 4 : création d'un type d'avancement - sans pourcentage 
 
 		page_typeavancement = page_typeavancement.addTypeAvancement(driver, nom_unite1, val_max_defaut);
 
@@ -103,38 +103,54 @@ public class Test_AVA_01_SBA {
 		assertTrue("Erreur titre de la page",page_typeavancement.avancement_header.getText().contains("avancement Liste"));
 
 		wait.until(ExpectedConditions.visibilityOf(page_typeavancement.enregister_msg));
-		String m = page_typeavancement.enregister_msg.getText();
-		assertEquals("Message d'enregistrement non affiché","Type d'avancement \"Type avancement - Test 1\" enregistré",m);
+		assertEquals("Message d'enregistrement non affiché",msg_enregistrement1,page_typeavancement.enregister_msg.getText());
 
-		assertFalse("La Case est cochée",page_typeavancement.actif_checkbox.isSelected());
-		assertFalse("La Case peut être sélectionnée",page_typeavancement.actif_checkbox.isDisplayed());
+		assertFalse("La case Activité du Test 1 est cochée",page_typeavancement.actif_checkbox.isSelected());
+		assertFalse("La case Activité du Test 1 peut être sélectionnée",page_typeavancement.actif_checkbox.isDisplayed());
 
+		assertFalse("La case prédéfini du Test 1 est cochée",page_typeavancement.predefini_checkbox.isSelected());
+		
 		assertTrue("L'icone supprimer n'est pas visible",page_typeavancement.supprimer_icon.isDisplayed());
-		assertTrue("L'icone supprimer n'est pas visible",page_typeavancement.modifier_icon.isDisplayed());
+		assertTrue("L'icone modifier n'est pas visible",page_typeavancement.modifier_icon.isDisplayed());
 
-		// Accès au formulaire de création
+		// Step 5 : Accès au formulaire de création
 
 		page_typeavancement.creer_btn.click();
 		wait.until(ExpectedConditions.visibilityOf(page_typeavancement.creer_type_header));
 		assertTrue("Erreur titre de la page",page_typeavancement.creer_type_header.getText().contains("Créer Type"));
 
+		// Step 6 : Créer un type d'avancement - sans pourcentage (1/2) :
+
 		page_typeavancement.addAvancementSansPour(driver, nom_unite2);
 		Thread.sleep(2000);
+
+		// Step 7 : Créer un type d'avancement - sans pourcentage (1/2) :
+
 		assertFalse("Valeur maximum par défaut est modifiable",page_typeavancement.val_max_input.isEnabled());
-		Thread.sleep(2000);
 		page_typeavancement.sauver_btn.click();
+		assertEquals("Erreur titre la page",titre_page_test2,page_typeavancement.modifier_type_header.getText());
+		assertEquals("Message d'enregistrement incorrect",msg_enregistrement2, page_typeavancement.enregister_msg.getText());
 
+		// Step 8 : Retour à la page de gestion des types d'avancement :
 
-		assertEquals("Erreur titre la page","Modifier Type d'avancement: Type avancement - Test 2",page_typeavancement.modifier_type_header.getText());
-		assertEquals("Message d'enregistrement n'est pas correct","Type d'avancement \"Type avancement - Test 2\" enregistré", page_typeavancement.enregister_msg.getText());
 		wait.until(ExpectedConditions.visibilityOf(page_typeavancement.enregister_msg));
 		page_typeavancement.annuler_btn.click();
-		
-		String s = page_typeavancement.avancement_header.getText();
-		System.out.println(s);
-		System.out.println("erreur");
+
 		//assertTrue("Erreur titre de la page",page_typeavancement.avancement_header.getText().contains("avancement Liste"));
 
+		
+		// Step 9 : Conformité du type d'avancement ajouté 
+		
+		assertFalse("La case Activité du Test 2  peut être sélectionnée",page_typeavancement.actif_checkbox2.isDisplayed());
+		
+		//assertTrue("La case Activité du Test 2 n'est pas cochée ",page_typeavancement.actif_checkbox2.isSelected());
+		
+
+		assertFalse("La case prédéfini du Test 2 est cochée",page_typeavancement.predefini_checkbox2.isSelected());
+		
+		assertTrue("L'icone supprimer n'est pas visible",page_typeavancement.supprimer_icon2.isDisplayed());
+		assertTrue("L'icone modifier n'est pas visible",page_typeavancement.modifier_icon2.isDisplayed());
+		
 	}
 
 

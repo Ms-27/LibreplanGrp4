@@ -114,5 +114,7 @@ public class PageIndex extends PageAbstractMenu {
 	@FindBy (xpath="//textarea")
 	WebElement error_text_popup;
 	
+	@FindBy (xpath="//tr[@class='z-row z-grid-odd']/td[2]//span")
+	WebElement error_code_popup;
 	
 }

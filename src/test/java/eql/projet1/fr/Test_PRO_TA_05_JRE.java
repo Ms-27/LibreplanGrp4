@@ -10,9 +10,12 @@ import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Test_PRO_TA_05_JRE {
-
+	static Logger logger = LoggerFactory.getLogger(Test_PRO_TA_05_JRE.class);
+	
 	WebDriver driver;
 	String login = "admin";
 	String pswd = "admin";
@@ -84,13 +87,12 @@ public class Test_PRO_TA_05_JRE {
 		page_index.checkbox4_print_popup.click();
 		page_index.checkbox5_print_popup.click();
 		page_index.checkbox6_print_popup.click();
-		
 		page_index.validate_print_popup_btn.click();
 		
 		TechnicalTools.takeSnapShot(driver, snap_path);
-		System.out.println(page_index.error_title_popup.getText());
-		System.out.println(page_index.error_code_popup.getText());
-		System.out.println(page_index.error_text_popup.getText());
-		
+		TechnicalTools.assertFalseLogger(logger, page_index.error_text_popup.getText(), page_index.error_title_popup.isDisplayed());
+
+
+
 }
 }

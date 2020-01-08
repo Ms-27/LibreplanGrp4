@@ -29,12 +29,14 @@
 			<version>3.13.0</version>
 		</dependency>
 
+		<!-- pour le screenshot -->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
 			<version>1.5.3</version>
 		</dependency>
 
+		<!-- pour la connexion Java SQL -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>

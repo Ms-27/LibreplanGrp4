@@ -27,11 +27,11 @@ public class TechnicalTools {
 	static WebDriver setBrowser(EBrowser nav) {
 		switch (nav) {
 		case firefox:
-			System.setProperty("webdriver.gecko.driver", "/home/autom/WebDrivers/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
 			driver = new FirefoxDriver();
 			return driver;
 		case chrome:
-			System.setProperty("webdriver.chrome.driver", "/home/autom/WebDrivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
 			driver = new ChromeDriver();
 			return driver;
 		case ie:
